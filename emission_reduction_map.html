@@ -1,0 +1,3031 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3b91eed035c726d0f732158d9dc879f6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3b91eed035c726d0f732158d9dc879f6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3b91eed035c726d0f732158d9dc879f6 = L.map(
+                "map_3b91eed035c726d0f732158d9dc879f6",
+                {
+                    center: [40.5043, -91.81145000000001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6f51f38568208f92cb799e34c963b87d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6f51f38568208f92cb799e34c963b87d.addTo(map_3b91eed035c726d0f732158d9dc879f6);
+        
+    
+            var heat_map_54b18546bfc6aebcb0c8a7f74aa90799 = L.heatLayer(
+                [[44.4372, -90.9113, 0.0047724834276403364], [41.8025, -91.8782, 0.2937926551836204], [37.3477, -120.6091, 0.004056788991234123], [32.6082, -85.4799, 0.024420394056358638], [32.6082, -85.4799, 0.0016899577510562237], [35.3735, -119.0205, 0.19629509262268444], [35.3735, -119.0205, 0.018199545011374715], [35.3735, -119.0205, 0.06858367353601548], [35.3735, -119.0205, 0.055227843048216034], [44.9732, -72.7661, 0.007740445758262436], [34.5388, -78.7875, 0.022099447513812154], [43.985, -73.3134, 0.018199545011374715], [44.1332, -73.0787, 0.0055248618784530384], [33.3703, -112.584, 0.033799155021124475], [33.3703, -112.584, 0.022099447513812154], [35.4005, -119.4696, 0.06858367353601548], [37.3445, -85.3511, 0.0047724834276403364], [40.498, -82.8937, 0.059798505037374064], [44.5558, -87.6197, 0.04419889502762431], [43.6577, -91.0965, 0.0033799155021124474], [36.8185, -79.3967, 0.0055248618784530384], [44.6296, -90.3583, 0.010787949479345207], [33.9836, -117.6654, 0.028989275268118297], [41.7578, -80.3678, 0.003659497553657049], [41.7847, -72.3393, 0.022580257411372935], [42.8534, -78.0103, 0.20674232002647422], [45.2198, -123.0781, 0.0018045210970182367], [45.0025, -90.3308, 0.034555747978446655], [43.0886, -84.3869, 0.05225988071759393], [47.2018, -121.9897, 0.07799805004874878], [44.9622, -69.1225, 0.0831979200519987], [41.075, -87.2575, 0.0718232044198895], [41.075, -87.2575, 0.03314917127071823], [42.5947, -86.1051, 0.002380558065957027], [42.5679, -114.6115, 0.18656017617824394], [43.7718, -88.4397, 0.055248618784530384], [42.7642, -85.316, 0.13259668508287292], [34.6394, -102.723, 0.004056788991234123], [40.4128, -84.7764, 0.059798505037374064], [39.8304, -77.2339, 0.022099447513812154], [44.8897, -88.3063, 0.011723555084638865], [42.9388, -114.7131, 0.09677931567692542], [42.0997, -72.9224, 0.004588885277868053], [44.317, -88.0972, 0.03964900877478063], [42.3418, -72.5884, 0.05967978654414918], [45.4977, -95.795, 0.1351966200844979], [42.5314, -114.3011, 0.23074423139421515], [42.2047, -86.1661, 0.011723555084638865], [42.7838, -71.0871, 0.07006765470132653], [42.637, -76.1788, 0.018477939877987067], [42.7179, -114.5159, 0.0399659604400301], [42.7179, -114.5159, 0.13387884480970166], [34.9624, -77.9622, 0.11903903315659117], [36.7248, -120.0625, 0.0384790380240494], [44.4583, -87.5031, 0.022099447513812154], [42.6653, -76.6166, 0.011049723756906077], [42.6653, -76.6166, 0.06629834254143646], [44.2642, -96.2891, 0.0399659604400301], [32.856, -116.904, 0.013671161645616393], [34.1695, -80.0649, 0.015469613259668509], [44.4702, -93.9026, 0.027624309392265192], [36.2082, -119.0897, 0.031069223269418265], [48.9502, -122.4545, 0.047448813779655506], [48.9502, -122.4545, 0.047448813779655506], [48.9502, -122.4545, 0.022099447513812154], [36.963, -120.0778, 0.056574585635359116], [36.963, -120.0778, 0.011128579548068373], [34.896, -78.0541, 0.020799480012999676], [34.896, -78.0541, 0.059798505037374064], [40.5713, -77.3951, 0.008397790055248619], [38.3945, -113.0123, 0.30939226519337015], [37.6375, -121.0028, 0.005128638907314988], [47.8595, -121.9851, 0.010789730256743582], [40.7455, -86.7668, 0.08001032850891056], [41.5817, -84.5968, 0.0018045210970182367], [45.5857, -95.9046, 0.19116022099447513], [45.5857, -95.9046, 0.19116022099447513], [40.1106, -76.5065, 0.005585141193387973], [48.4203, -122.3115, 0.047448813779655506], [44.3134, -89.9073, 0.04939876503087423], [44.531, -87.8258, 0.021579460513487164], [41.7161, -90.878, 0.05585231716239057], [43.0659, -78.2697, 0.0055248618784530384], [43.0659, -78.2697, 0.0055248618784530384], [30.0383, -82.9404, 0.022099447513812154], [44.7088, -75.4717, 0.08026259343516412], [46.3311, -120.0924, 0.1024374390640234], [42.7156, -78.0056, 0.022099447513812154], [44.5784, -73.5268, 0.03751177910049966], [43.9116, -88.7289, 0.1411764705882353], [35.9785, -119.3003, 0.09988083631242552], [41.3483, -86.3187, 0.06629834254143646], [40.9375, -87.1684, 0.06077348066298342], [45.0154, -96.5712, 0.02295718565939961], [40.7492, -86.8743, 1.0], [40.7492, -86.8743, 0.07748107256222704], [45.4864, -91.7447, 0.051517890134938404], [43.362, -92.5538, 0.030000163237928184], [37.6028, -121.0425, 0.05173011428138954], [43.7208, -112.1284, 0.143646408839779], [43.2053, -96.295, 0.01044133896652584], [43.6092, -72.9783, 0.010708408088884536], [42.7835, -76.5589, 0.03751177910049966], [42.7835, -76.5589, 0.053974650633734154], [43.729, -87.8266, 0.031219802838262378], [45.65901, -122.64871, 0.030409249357807148], [42.0148, -93.1653, 0.031232401838355867], [32.2147, -98.2205, 0.008685148168099451], [44.8228, -87.366, 0.0013484758771441646], [43.1825, -89.2362, 0.030000163237928184], [41.9915, -72.5965, 0.007740445758262436], [45.4562, -123.8331, 0.040388031395105536], [45.4562, -123.8331, 0.07799805004874878], [45.4562, -123.8331, 0.08839779005524862], [36.0572, -119.3135, 0.036514944432325266], [33.488, -112.9308, 0.048023808993816246], [29.6092, -82.8147, 0.06629834254143646], [29.6092, -82.8147, 0.022099447513812154], [36.3276, -119.3269, 0.044839974891038685], [41.5862, -84.4349, 0.0], [44.3214, -88.9337, 0.0055248618784530384], [42.3141, -83.0368, 0.07895677608059798], [40.0363, 74.6178, 0.03867403314917127]],
+                {
+  "minOpacity": 0.3,
+  "maxZoom": 10,
+  "radius": 18,
+  "blur": 22,
+}
+            );
+        
+    
+            heat_map_54b18546bfc6aebcb0c8a7f74aa90799.addTo(map_3b91eed035c726d0f732158d9dc879f6);
+        
+    
+            var marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_63bab53746fdf22bee3eeab8211dd9fd = L.circleMarker(
+                [44.4372, -90.9113],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_64bcb821880ed0d3ebc8dca6942639fb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_afe99a4334021819469786249b306c1c = $(`<div id="html_afe99a4334021819469786249b306c1c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Heller Farms / Cow Poo, LLC Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,300,000</div>`)[0];
+                popup_64bcb821880ed0d3ebc8dca6942639fb.setContent(html_afe99a4334021819469786249b306c1c);
+            
+        
+
+        circle_marker_63bab53746fdf22bee3eeab8211dd9fd.bindPopup(popup_64bcb821880ed0d3ebc8dca6942639fb)
+        ;
+
+        
+    
+    
+            var circle_marker_0c49fdc9f801653a4319664858cb6218 = L.circleMarker(
+                [41.8025, -91.8782],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_2beffae3237fbed77307b97d44fc0107 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d087233377b627bb1ffabc52b70a5a0d = $(`<div id="html_d087233377b627bb1ffabc52b70a5a0d" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Amana Farms, Inc. Digester<br><b>State:</b> Iowa<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 22,776,000</div>`)[0];
+                popup_2beffae3237fbed77307b97d44fc0107.setContent(html_d087233377b627bb1ffabc52b70a5a0d);
+            
+        
+
+        circle_marker_0c49fdc9f801653a4319664858cb6218.bindPopup(popup_2beffae3237fbed77307b97d44fc0107)
+        ;
+
+        
+    
+    
+            var circle_marker_4051bbe4e2afd27a5bc0838119bf6ab4 = L.circleMarker(
+                [37.3477, -120.6091],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ad1e810039472add544e15edfa882f12 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_62095de5b60c06a9cda5a2a507c2f941 = $(`<div id="html_62095de5b60c06a9cda5a2a507c2f941" style="width: 100.0%; height: 100.0%;"><b>Project:</b> CottonWood Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 3,251,772</div>`)[0];
+                popup_ad1e810039472add544e15edfa882f12.setContent(html_62095de5b60c06a9cda5a2a507c2f941);
+            
+        
+
+        circle_marker_4051bbe4e2afd27a5bc0838119bf6ab4.bindPopup(popup_ad1e810039472add544e15edfa882f12)
+        ;
+
+        
+    
+    
+            var circle_marker_b0acc38bde960cebbd11bb9c82ee7a39 = L.circleMarker(
+                [32.6082, -85.4799],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_7ba92fd6e80f7b08dab8ed9c75cf8208 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f85747c3940be10d16e21937b5549ff8 = $(`<div id="html_f85747c3940be10d16e21937b5549ff8" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Cayuga Regional Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,624,000</div>`)[0];
+                popup_7ba92fd6e80f7b08dab8ed9c75cf8208.setContent(html_f85747c3940be10d16e21937b5549ff8);
+            
+        
+
+        circle_marker_b0acc38bde960cebbd11bb9c82ee7a39.bindPopup(popup_7ba92fd6e80f7b08dab8ed9c75cf8208)
+        ;
+
+        
+    
+    
+            var circle_marker_a8757c38fd0fa08e1ed2567c0dca4827 = L.circleMarker(
+                [32.6082, -85.4799],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_e4bdf7b9da370c6976c785b2dd6a7916 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0acef0bbc66f73af3e3d5258ee3bb2e7 = $(`<div id="html_0acef0bbc66f73af3e3d5258ee3bb2e7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Patterson Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,092,280</div>`)[0];
+                popup_e4bdf7b9da370c6976c785b2dd6a7916.setContent(html_0acef0bbc66f73af3e3d5258ee3bb2e7);
+            
+        
+
+        circle_marker_a8757c38fd0fa08e1ed2567c0dca4827.bindPopup(popup_e4bdf7b9da370c6976c785b2dd6a7916)
+        ;
+
+        
+    
+    
+            var circle_marker_1512b618f66b555c3324ba127b6f3d12 = L.circleMarker(
+                [35.3735, -119.0205],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_7eedb4159459a03c88b5e0bad2fa0dd1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_84ca26c2491f9104ac92984d2ba7a9c4 = $(`<div id="html_84ca26c2491f9104ac92984d2ba7a9c4" style="width: 100.0%; height: 100.0%;"><b>Project:</b> ABEC Bidart-Old River LLC Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 16,206,000</div>`)[0];
+                popup_7eedb4159459a03c88b5e0bad2fa0dd1.setContent(html_84ca26c2491f9104ac92984d2ba7a9c4);
+            
+        
+
+        circle_marker_1512b618f66b555c3324ba127b6f3d12.bindPopup(popup_7eedb4159459a03c88b5e0bad2fa0dd1)
+        ;
+
+        
+    
+    
+            var circle_marker_7a7a25a28d37e9d4f91fddc70e9da9f4 = L.circleMarker(
+                [35.3735, -119.0205],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_c0ae80b0150204dc2ca39047b92ece00 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7f3722aa08b26ac52d2656ed453199eb = $(`<div id="html_7f3722aa08b26ac52d2656ed453199eb" style="width: 100.0%; height: 100.0%;"><b>Project:</b> ABEC Bidart-Stockdale LLC Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 4,204,800</div>`)[0];
+                popup_c0ae80b0150204dc2ca39047b92ece00.setContent(html_7f3722aa08b26ac52d2656ed453199eb);
+            
+        
+
+        circle_marker_7a7a25a28d37e9d4f91fddc70e9da9f4.bindPopup(popup_c0ae80b0150204dc2ca39047b92ece00)
+        ;
+
+        
+    
+    
+            var circle_marker_2963861154fef6dc0b455ff1037ed0ea = L.circleMarker(
+                [35.3735, -119.0205],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4c71003b1dcb33afa4a682a685c1c93a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_eb823de069ae292d39d785c9ab7c407c = $(`<div id="html_eb823de069ae292d39d785c9ab7c407c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> ABEC Carlos Echeverria & Sons Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 7,600,000</div>`)[0];
+                popup_4c71003b1dcb33afa4a682a685c1c93a.setContent(html_eb823de069ae292d39d785c9ab7c407c);
+            
+        
+
+        circle_marker_2963861154fef6dc0b455ff1037ed0ea.bindPopup(popup_4c71003b1dcb33afa4a682a685c1c93a)
+        ;
+
+        
+    
+    
+            var circle_marker_b994eab72b14e89c89de9ad8779fa21b = L.circleMarker(
+                [35.3735, -119.0205],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_2963b61230ff85e472e8be62c544ab1c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_28c27b434003efd067a82b600bbc5e89 = $(`<div id="html_28c27b434003efd067a82b600bbc5e89" style="width: 100.0%; height: 100.0%;"><b>Project:</b> ABEC Lakeview Farms Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 6,700,000</div>`)[0];
+                popup_2963b61230ff85e472e8be62c544ab1c.setContent(html_28c27b434003efd067a82b600bbc5e89);
+            
+        
+
+        circle_marker_b994eab72b14e89c89de9ad8779fa21b.bindPopup(popup_2963b61230ff85e472e8be62c544ab1c)
+        ;
+
+        
+    
+    
+            var circle_marker_c7b48a6ff1e8eddde38130d727ede4de = L.circleMarker(
+                [44.9732, -72.7661],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3fd801b981396cd71abb70414c12522e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ffb108a0762c76b3556516d61e65c5d7 = $(`<div id="html_ffb108a0762c76b3556516d61e65c5d7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Pleasant Valley Farms - Berkshire Cow Power, LLC Digester<br><b>State:</b> Vermont<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,500,000</div>`)[0];
+                popup_3fd801b981396cd71abb70414c12522e.setContent(html_ffb108a0762c76b3556516d61e65c5d7);
+            
+        
+
+        circle_marker_c7b48a6ff1e8eddde38130d727ede4de.bindPopup(popup_3fd801b981396cd71abb70414c12522e)
+        ;
+
+        
+    
+    
+            var circle_marker_38e3c32a1ba65ee52df9b5e0f7380961 = L.circleMarker(
+                [34.5388, -78.7875],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_f304b8b3d5ea4fb638d550cd9457074b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_94cfbf2e8c5a03319c85109a6478d74e = $(`<div id="html_94cfbf2e8c5a03319c85109a6478d74e" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Storms Farm Digester<br><b>State:</b> North Carolina<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_f304b8b3d5ea4fb638d550cd9457074b.setContent(html_94cfbf2e8c5a03319c85109a6478d74e);
+            
+        
+
+        circle_marker_38e3c32a1ba65ee52df9b5e0f7380961.bindPopup(popup_f304b8b3d5ea4fb638d550cd9457074b)
+        ;
+
+        
+    
+    
+            var circle_marker_6b3c4c5141a648da4ae740f7281b0b8c = L.circleMarker(
+                [43.985, -73.3134],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_2b23bdcff41eb55b5bb54d4ee9ba81f5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cd161714c6c6f58f8c6ab6b57ce8bf96 = $(`<div id="html_cd161714c6c6f58f8c6ab6b57ce8bf96" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Blue Spruce Farm, Inc. / Audet's Cow Power Digester<br><b>State:</b> Vermont<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,204,800</div>`)[0];
+                popup_2b23bdcff41eb55b5bb54d4ee9ba81f5.setContent(html_cd161714c6c6f58f8c6ab6b57ce8bf96);
+            
+        
+
+        circle_marker_6b3c4c5141a648da4ae740f7281b0b8c.bindPopup(popup_2b23bdcff41eb55b5bb54d4ee9ba81f5)
+        ;
+
+        
+    
+    
+            var circle_marker_947a760ad87216556d0634d1b85f80ca = L.circleMarker(
+                [44.1332, -73.0787],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3afe8ae3cbc6e034b8fd1155d52a6486 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a08836e1717f6d716fe77b4fe753cd24 = $(`<div id="html_a08836e1717f6d716fe77b4fe753cd24" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Four Hills Farm Digester<br><b>State:</b> Vermont<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,350,700</div>`)[0];
+                popup_3afe8ae3cbc6e034b8fd1155d52a6486.setContent(html_a08836e1717f6d716fe77b4fe753cd24);
+            
+        
+
+        circle_marker_947a760ad87216556d0634d1b85f80ca.bindPopup(popup_3afe8ae3cbc6e034b8fd1155d52a6486)
+        ;
+
+        
+    
+    
+            var circle_marker_bc9f583d9b7ba614a06b9dfb0db9a473 = L.circleMarker(
+                [33.3703, -112.584],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_9b629d343bea37ac376fcceea30131e3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a54af689293f036e70ec30f31f8182ac = $(`<div id="html_a54af689293f036e70ec30f31f8182ac" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Stotz Southern Dairy Digester<br><b>State:</b> Arizona<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 5,256,000</div>`)[0];
+                popup_9b629d343bea37ac376fcceea30131e3.setContent(html_a54af689293f036e70ec30f31f8182ac);
+            
+        
+
+        circle_marker_bc9f583d9b7ba614a06b9dfb0db9a473.bindPopup(popup_9b629d343bea37ac376fcceea30131e3)
+        ;
+
+        
+    
+    
+            var circle_marker_4aaf0a18a1f1622aadca3b42d9cb9fc3 = L.circleMarker(
+                [33.3703, -112.584],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_04135bd49546d84ad90d69df2c30aea3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_05f776403cc54135f774d14fe1cf4490 = $(`<div id="html_05f776403cc54135f774d14fe1cf4490" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Triple G Dairy Digester<br><b>State:</b> Arizona<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_04135bd49546d84ad90d69df2c30aea3.setContent(html_05f776403cc54135f774d14fe1cf4490);
+            
+        
+
+        circle_marker_4aaf0a18a1f1622aadca3b42d9cb9fc3.bindPopup(popup_04135bd49546d84ad90d69df2c30aea3)
+        ;
+
+        
+    
+    
+            var circle_marker_7448d7daaad47da8468a33c110dd2d69 = L.circleMarker(
+                [35.4005, -119.4696],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3aad079865dbdd77122ffc481ec2ae28 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3c2837474ad09aab6b6dd1a77a84e1f7 = $(`<div id="html_3c2837474ad09aab6b6dd1a77a84e1f7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> ABEC West Star North Dairies Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 7,600,000</div>`)[0];
+                popup_3aad079865dbdd77122ffc481ec2ae28.setContent(html_3c2837474ad09aab6b6dd1a77a84e1f7);
+            
+        
+
+        circle_marker_7448d7daaad47da8468a33c110dd2d69.bindPopup(popup_3aad079865dbdd77122ffc481ec2ae28)
+        ;
+
+        
+    
+    
+            var circle_marker_69a6e22be056f08d31705db6e8c24a10 = L.circleMarker(
+                [37.3445, -85.3511],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_96261b170e999a776ebb25bfb476edb9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5e6641392fcf5c814c6aea9ae5fe3c7b = $(`<div id="html_5e6641392fcf5c814c6aea9ae5fe3c7b" style="width: 100.0%; height: 100.0%;"><b>Project:</b> MAC Farm Digester<br><b>State:</b> Kentucky<br><b>Digester Type:</b> Primary digester tank with secondary covered lagoon<br><b>Electricity Generated (kWh/yr):</b> 3,300,000</div>`)[0];
+                popup_96261b170e999a776ebb25bfb476edb9.setContent(html_5e6641392fcf5c814c6aea9ae5fe3c7b);
+            
+        
+
+        circle_marker_69a6e22be056f08d31705db6e8c24a10.bindPopup(popup_96261b170e999a776ebb25bfb476edb9)
+        ;
+
+        
+    
+    
+            var circle_marker_590b523ac2d1f8a6c67b4d7cef8a8a57 = L.circleMarker(
+                [40.498, -82.8937],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_90f11a4f3cae0ba28e2ec16f7ee81b10 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c3ca4909f42aa7706b2dab298cedcc98 = $(`<div id="html_c3ca4909f42aa7706b2dab298cedcc98" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Renergy - Emerald BioEnergy Digester<br><b>State:</b> Ohio<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 7,008,000</div>`)[0];
+                popup_90f11a4f3cae0ba28e2ec16f7ee81b10.setContent(html_c3ca4909f42aa7706b2dab298cedcc98);
+            
+        
+
+        circle_marker_590b523ac2d1f8a6c67b4d7cef8a8a57.bindPopup(popup_90f11a4f3cae0ba28e2ec16f7ee81b10)
+        ;
+
+        
+    
+    
+            var circle_marker_7fd050a5ec5cb15a8292e83c62d4d205 = L.circleMarker(
+                [44.5558, -87.6197],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_5a361b46c96d269974d1dbda7e8c5cbf = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_299863694f91577b7644f0c3273f754a = $(`<div id="html_299863694f91577b7644f0c3273f754a" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Dairy Dreams Digester - pipeline injection<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,956,800</div>`)[0];
+                popup_5a361b46c96d269974d1dbda7e8c5cbf.setContent(html_299863694f91577b7644f0c3273f754a);
+            
+        
+
+        circle_marker_7fd050a5ec5cb15a8292e83c62d4d205.bindPopup(popup_5a361b46c96d269974d1dbda7e8c5cbf)
+        ;
+
+        
+    
+    
+            var circle_marker_8c2adaf38161ac06419c0a830166bfe6 = L.circleMarker(
+                [43.6577, -91.0965],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_6b7a9833db8454638a3a2f66c7a014bd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_90fecf178080582f90c75c09b2ac23f7 = $(`<div id="html_90fecf178080582f90c75c09b2ac23f7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> USEMCO - Peters Farm Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,206,160</div>`)[0];
+                popup_6b7a9833db8454638a3a2f66c7a014bd.setContent(html_90fecf178080582f90c75c09b2ac23f7);
+            
+        
+
+        circle_marker_8c2adaf38161ac06419c0a830166bfe6.bindPopup(popup_6b7a9833db8454638a3a2f66c7a014bd)
+        ;
+
+        
+    
+    
+            var circle_marker_c9b838f81298ae0bea07b82987559ce7 = L.circleMarker(
+                [36.8185, -79.3967],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_c76ab3b4de04b9bcf5e94ea3554e5fbb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a571b916c1c0f07b5c8cb9ffb738122f = $(`<div id="html_a571b916c1c0f07b5c8cb9ffb738122f" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Dairy Energy, Inc. (Van der Hyde Dairy) Digester<br><b>State:</b> Virginia<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,350,700</div>`)[0];
+                popup_c76ab3b4de04b9bcf5e94ea3554e5fbb.setContent(html_a571b916c1c0f07b5c8cb9ffb738122f);
+            
+        
+
+        circle_marker_c9b838f81298ae0bea07b82987559ce7.bindPopup(popup_c76ab3b4de04b9bcf5e94ea3554e5fbb)
+        ;
+
+        
+    
+    
+            var circle_marker_1a92d2e911e9a9c673bc5e48e7251c12 = L.circleMarker(
+                [44.6296, -90.3583],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_f4045db74002a837d754e1dc60a0fa48 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5d44882391b00acab5937d455f3d2cf6 = $(`<div id="html_5d44882391b00acab5937d455f3d2cf6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Norm-E-Lane, Inc. (NEL) Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,705,360</div>`)[0];
+                popup_f4045db74002a837d754e1dc60a0fa48.setContent(html_5d44882391b00acab5937d455f3d2cf6);
+            
+        
+
+        circle_marker_1a92d2e911e9a9c673bc5e48e7251c12.bindPopup(popup_f4045db74002a837d754e1dc60a0fa48)
+        ;
+
+        
+    
+    
+            var circle_marker_aa0526d36cd6e50bddb6ac0721453dd0 = L.circleMarker(
+                [33.9836, -117.6654],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_63abc626767dcb78a81bb8dd4b424cfc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ee106deba39eca67ed15a120d47943f6 = $(`<div id="html_ee106deba39eca67ed15a120d47943f6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> IEUA - Reg Plant 5 Digester<br><b>State:</b> California<br><b>Digester Type:</b> Horizontal Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,931,880</div>`)[0];
+                popup_63abc626767dcb78a81bb8dd4b424cfc.setContent(html_ee106deba39eca67ed15a120d47943f6);
+            
+        
+
+        circle_marker_aa0526d36cd6e50bddb6ac0721453dd0.bindPopup(popup_63abc626767dcb78a81bb8dd4b424cfc)
+        ;
+
+        
+    
+    
+            var circle_marker_602e4c66b08bd6a5d13d27d36f095dcd = L.circleMarker(
+                [41.7578, -80.3678],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_f40f9f4a4c027669030288bd1ea4703a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bdb50fc1e763836ae6b8ffa8c3237921 = $(`<div id="html_bdb50fc1e763836ae6b8ffa8c3237921" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bortnick Dairy Digester<br><b>State:</b> Pennsylvania<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,225,000</div>`)[0];
+                popup_f40f9f4a4c027669030288bd1ea4703a.setContent(html_bdb50fc1e763836ae6b8ffa8c3237921);
+            
+        
+
+        circle_marker_602e4c66b08bd6a5d13d27d36f095dcd.bindPopup(popup_f40f9f4a4c027669030288bd1ea4703a)
+        ;
+
+        
+    
+    
+            var circle_marker_75686380aa9c1228434d091b982f6acb = L.circleMarker(
+                [41.7847, -72.3393],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ad54d952518e8a5197570d831f785a0d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_567bfc955bfb9745d2150ef40fe5e744 = $(`<div id="html_567bfc955bfb9745d2150ef40fe5e744" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Hytone Farm Digester<br><b>State:</b> Connecticut<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,500,000</div>`)[0];
+                popup_ad54d952518e8a5197570d831f785a0d.setContent(html_567bfc955bfb9745d2150ef40fe5e744);
+            
+        
+
+        circle_marker_75686380aa9c1228434d091b982f6acb.bindPopup(popup_ad54d952518e8a5197570d831f785a0d)
+        ;
+
+        
+    
+    
+            var circle_marker_2c9acfa1ca77b540d9c57d6de845a61a = L.circleMarker(
+                [42.8534, -78.0103],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_7e4243c66ed6edf082e18f227c6080e6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ce493252e2436a09d347727c5d694097 = $(`<div id="html_ce493252e2436a09d347727c5d694097" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Synergy Dairy - Covington Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 16,910,000</div>`)[0];
+                popup_7e4243c66ed6edf082e18f227c6080e6.setContent(html_ce493252e2436a09d347727c5d694097);
+            
+        
+
+        circle_marker_2c9acfa1ca77b540d9c57d6de845a61a.bindPopup(popup_7e4243c66ed6edf082e18f227c6080e6)
+        ;
+
+        
+    
+    
+            var circle_marker_c911564e1fa7ea25d4dec8aa79d1671e = L.circleMarker(
+                [45.2198, -123.0781],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_70a169834868f329a4eb27e2af8b673d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d87105b737210b2b6572435fa15a2e0c = $(`<div id="html_d87105b737210b2b6572435fa15a2e0c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> RES Forest Glen Oaks LLC Digester<br><b>State:</b> Oregon<br><b>Digester Type:</b> Anaerobic Sequencing Batch Reactor<br><b>Electricity Generated (kWh/yr):</b> 3,100,000</div>`)[0];
+                popup_70a169834868f329a4eb27e2af8b673d.setContent(html_d87105b737210b2b6572435fa15a2e0c);
+            
+        
+
+        circle_marker_c911564e1fa7ea25d4dec8aa79d1671e.bindPopup(popup_70a169834868f329a4eb27e2af8b673d)
+        ;
+
+        
+    
+    
+            var circle_marker_841a0b493f3bcb531604d3c1ab828439 = L.circleMarker(
+                [45.0025, -90.3308],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_09e655c591ce2498675ad95e22484290 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_13ae25f993333a988be71657530d9ff2 = $(`<div id="html_13ae25f993333a988be71657530d9ff2" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bach Digester, LLC Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,306,984</div>`)[0];
+                popup_09e655c591ce2498675ad95e22484290.setContent(html_13ae25f993333a988be71657530d9ff2);
+            
+        
+
+        circle_marker_841a0b493f3bcb531604d3c1ab828439.bindPopup(popup_09e655c591ce2498675ad95e22484290)
+        ;
+
+        
+    
+    
+            var circle_marker_d1cece004c818f54bf5a7bd3c534a1fa = L.circleMarker(
+                [43.0886, -84.3869],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b5736f6e31e9baa28b141ceb2ef2ddf3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bad751af021a96a2066d2600d0babf3e = $(`<div id="html_bad751af021a96a2066d2600d0babf3e" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Green Meadow Dairy Digester<br><b>State:</b> Michigan<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 6,500,000</div>`)[0];
+                popup_b5736f6e31e9baa28b141ceb2ef2ddf3.setContent(html_bad751af021a96a2066d2600d0babf3e);
+            
+        
+
+        circle_marker_d1cece004c818f54bf5a7bd3c534a1fa.bindPopup(popup_b5736f6e31e9baa28b141ceb2ef2ddf3)
+        ;
+
+        
+    
+    
+            var circle_marker_f998638d3b7ecd59e78f4257b732a3ae = L.circleMarker(
+                [47.2018, -121.9897],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ca81e200a149690365aa98fdf726c68f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fef185fb8df63c6e574fb4839239da91 = $(`<div id="html_fef185fb8df63c6e574fb4839239da91" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Rainier Biogas Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 8,234,400</div>`)[0];
+                popup_ca81e200a149690365aa98fdf726c68f.setContent(html_fef185fb8df63c6e574fb4839239da91);
+            
+        
+
+        circle_marker_f998638d3b7ecd59e78f4257b732a3ae.bindPopup(popup_ca81e200a149690365aa98fdf726c68f)
+        ;
+
+        
+    
+    
+            var circle_marker_cb46819a32493b50f3bb611462e3eed4 = L.circleMarker(
+                [44.9622, -69.1225],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_dc1c40edc7cc160bc4eefdf18060edbd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ea7b801196ef3879253d20aae3fed516 = $(`<div id="html_ea7b801196ef3879253d20aae3fed516" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Stonyvale Farm / Exeter Agri-Energy, LLC Digester<br><b>State:</b> Maine<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 8,584,800</div>`)[0];
+                popup_dc1c40edc7cc160bc4eefdf18060edbd.setContent(html_ea7b801196ef3879253d20aae3fed516);
+            
+        
+
+        circle_marker_cb46819a32493b50f3bb611462e3eed4.bindPopup(popup_dc1c40edc7cc160bc4eefdf18060edbd)
+        ;
+
+        
+    
+    
+            var circle_marker_1c620947877b1ef435f0d50aa9a753e7 = L.circleMarker(
+                [41.075, -87.2575],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_a87b62ccf6f46b1eddc4beaf2a65c0ce = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2f8f7bd30b1e62efc96e8a567e30be7c = $(`<div id="html_2f8f7bd30b1e62efc96e8a567e30be7c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Curtiss Creek Dairy Digester 1<br><b>State:</b> Indiana<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 7,818,300</div>`)[0];
+                popup_a87b62ccf6f46b1eddc4beaf2a65c0ce.setContent(html_2f8f7bd30b1e62efc96e8a567e30be7c);
+            
+        
+
+        circle_marker_1c620947877b1ef435f0d50aa9a753e7.bindPopup(popup_a87b62ccf6f46b1eddc4beaf2a65c0ce)
+        ;
+
+        
+    
+    
+            var circle_marker_7c8cb56e6e82fb7000c0ff0aead094b0 = L.circleMarker(
+                [41.075, -87.2575],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_66537ed32129c66a05b3802903400e68 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7c4b3b8c33f1e347bc9251d22f7f044f = $(`<div id="html_7c4b3b8c33f1e347bc9251d22f7f044f" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Prairie's Edge Dairy Site 1 Digester<br><b>State:</b> Indiana<br><b>Digester Type:</b> Vertical Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,212,200</div>`)[0];
+                popup_66537ed32129c66a05b3802903400e68.setContent(html_7c4b3b8c33f1e347bc9251d22f7f044f);
+            
+        
+
+        circle_marker_7c8cb56e6e82fb7000c0ff0aead094b0.bindPopup(popup_66537ed32129c66a05b3802903400e68)
+        ;
+
+        
+    
+    
+            var circle_marker_e340d7259a487def595641a7e35d5b30 = L.circleMarker(
+                [42.5947, -86.1051],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3db437ddad74eba8fc030ff0c51b7224 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_80aa18c328f3bc3b6745ac8020c5b3d3 = $(`<div id="html_80aa18c328f3bc3b6745ac8020c5b3d3" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Scenic View Dairy - Fennville Digester<br><b>State:</b> Michigan<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,138,817</div>`)[0];
+                popup_3db437ddad74eba8fc030ff0c51b7224.setContent(html_80aa18c328f3bc3b6745ac8020c5b3d3);
+            
+        
+
+        circle_marker_e340d7259a487def595641a7e35d5b30.bindPopup(popup_3db437ddad74eba8fc030ff0c51b7224)
+        ;
+
+        
+    
+    
+            var circle_marker_c893e1f7b82dedf4691d66aa6aa442f5 = L.circleMarker(
+                [42.5679, -114.6115],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b7288b20d85dbefc259d2b0e773cea2a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ce786886d0dbd6727e9e68c6197050d6 = $(`<div id="html_ce786886d0dbd6727e9e68c6197050d6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bettencourt - Rock Creek Dairy Complex Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 15,550,000</div>`)[0];
+                popup_b7288b20d85dbefc259d2b0e773cea2a.setContent(html_ce786886d0dbd6727e9e68c6197050d6);
+            
+        
+
+        circle_marker_c893e1f7b82dedf4691d66aa6aa442f5.bindPopup(popup_b7288b20d85dbefc259d2b0e773cea2a)
+        ;
+
+        
+    
+    
+            var circle_marker_c9ee7cf4ee2d635d4fde87a53c7a93be = L.circleMarker(
+                [43.7718, -88.4397],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_eade8bbfc097514fab6bcd716eaf48cc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3244360efa1777b7b0d7ec938374f7fe = $(`<div id="html_3244360efa1777b7b0d7ec938374f7fe" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Vir-Clar Farms Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 6,701,400</div>`)[0];
+                popup_eade8bbfc097514fab6bcd716eaf48cc.setContent(html_3244360efa1777b7b0d7ec938374f7fe);
+            
+        
+
+        circle_marker_c9ee7cf4ee2d635d4fde87a53c7a93be.bindPopup(popup_eade8bbfc097514fab6bcd716eaf48cc)
+        ;
+
+        
+    
+    
+            var circle_marker_8cc122685bfd7ed7ddad8516aa4798a8 = L.circleMarker(
+                [42.7642, -85.316],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_0373243b787e0e0713dd7fcb2b6ad6e7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5780b9cea365e4a487ed7d72cf531ce1 = $(`<div id="html_5780b9cea365e4a487ed7d72cf531ce1" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Brook View Dairy Digester<br><b>State:</b> Michigan<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 11,913,600</div>`)[0];
+                popup_0373243b787e0e0713dd7fcb2b6ad6e7.setContent(html_5780b9cea365e4a487ed7d72cf531ce1);
+            
+        
+
+        circle_marker_8cc122685bfd7ed7ddad8516aa4798a8.bindPopup(popup_0373243b787e0e0713dd7fcb2b6ad6e7)
+        ;
+
+        
+    
+    
+            var circle_marker_891d614b96bd5995b036cae809b4acb2 = L.circleMarker(
+                [34.6394, -102.723],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_258c774617c19a154c6171381d285bf5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_10d16efc5c143e081e2116f04715ce22 = $(`<div id="html_10d16efc5c143e081e2116f04715ce22" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Del Rio Dairy Digester<br><b>State:</b> Texas<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,251,772</div>`)[0];
+                popup_258c774617c19a154c6171381d285bf5.setContent(html_10d16efc5c143e081e2116f04715ce22);
+            
+        
+
+        circle_marker_891d614b96bd5995b036cae809b4acb2.bindPopup(popup_258c774617c19a154c6171381d285bf5)
+        ;
+
+        
+    
+    
+            var circle_marker_49d2a5b3fe3b2c023a604243741367ab = L.circleMarker(
+                [40.4128, -84.7764],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_d30df338d614d1143e1034ffa1eaab5c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_afbb972769dcc28e317f0c4a4631dc22 = $(`<div id="html_afbb972769dcc28e317f0c4a4631dc22" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Wenning Poultry Farm Digester<br><b>State:</b> Ohio<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 7,008,000</div>`)[0];
+                popup_d30df338d614d1143e1034ffa1eaab5c.setContent(html_afbb972769dcc28e317f0c4a4631dc22);
+            
+        
+
+        circle_marker_49d2a5b3fe3b2c023a604243741367ab.bindPopup(popup_d30df338d614d1143e1034ffa1eaab5c)
+        ;
+
+        
+    
+    
+            var circle_marker_bc05aa757211e66f91d44f1c38227d66 = L.circleMarker(
+                [39.8304, -77.2339],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_d96c54496c22af86be988e610c188966 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_063a10ed7e8cf3140d9ba3034112d8af = $(`<div id="html_063a10ed7e8cf3140d9ba3034112d8af" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Mason Dixon Farms Digester<br><b>State:</b> Pennsylvania<br><b>Digester Type:</b> Horizontal Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_d96c54496c22af86be988e610c188966.setContent(html_063a10ed7e8cf3140d9ba3034112d8af);
+            
+        
+
+        circle_marker_bc05aa757211e66f91d44f1c38227d66.bindPopup(popup_d96c54496c22af86be988e610c188966)
+        ;
+
+        
+    
+    
+            var circle_marker_560fd8ed3f1a32247273140e02ddc3a1 = L.circleMarker(
+                [44.8897, -88.3063],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_f2c645aa6be82bc77ab89d4dfb081a72 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5750175bd0854ed9a2f024add157b542 = $(`<div id="html_5750175bd0854ed9a2f024add157b542" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Zahn's Farms Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,768,407</div>`)[0];
+                popup_f2c645aa6be82bc77ab89d4dfb081a72.setContent(html_5750175bd0854ed9a2f024add157b542);
+            
+        
+
+        circle_marker_560fd8ed3f1a32247273140e02ddc3a1.bindPopup(popup_f2c645aa6be82bc77ab89d4dfb081a72)
+        ;
+
+        
+    
+    
+            var circle_marker_084cd634036bdeb7d6a00e8c268a36c2 = L.circleMarker(
+                [42.9388, -114.7131],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_e8f9e7425f7adb847d2aa33bbd47e166 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b74f59ac2048222cfcf7d155e3492496 = $(`<div id="html_b74f59ac2048222cfcf7d155e3492496" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Big Sky West Dairy Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 9,500,000</div>`)[0];
+                popup_e8f9e7425f7adb847d2aa33bbd47e166.setContent(html_b74f59ac2048222cfcf7d155e3492496);
+            
+        
+
+        circle_marker_084cd634036bdeb7d6a00e8c268a36c2.bindPopup(popup_e8f9e7425f7adb847d2aa33bbd47e166)
+        ;
+
+        
+    
+    
+            var circle_marker_12efd678b051d25a9d0173c4ef5cc5fa = L.circleMarker(
+                [42.0997, -72.9224],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_9e7bcbf06100c5379a418a2b071ef9d3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8703229285b8f1086aac0a72afb044ce = $(`<div id="html_8703229285b8f1086aac0a72afb044ce" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Rockwood Farm Digester<br><b>State:</b> Massachusetts<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,287,628</div>`)[0];
+                popup_9e7bcbf06100c5379a418a2b071ef9d3.setContent(html_8703229285b8f1086aac0a72afb044ce);
+            
+        
+
+        circle_marker_12efd678b051d25a9d0173c4ef5cc5fa.bindPopup(popup_9e7bcbf06100c5379a418a2b071ef9d3)
+        ;
+
+        
+    
+    
+            var circle_marker_a0659bf0a3f8b5e8c6de10063b686222 = L.circleMarker(
+                [44.317, -88.0972],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3214d1e0890453f6c4f577ddcbcdc7a5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_54af9bd757b435248f9811ddf9814c67 = $(`<div id="html_54af9bd757b435248f9811ddf9814c67" style="width: 100.0%; height: 100.0%;"><b>Project:</b> BC Organics Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,650,200</div>`)[0];
+                popup_3214d1e0890453f6c4f577ddcbcdc7a5.setContent(html_54af9bd757b435248f9811ddf9814c67);
+            
+        
+
+        circle_marker_a0659bf0a3f8b5e8c6de10063b686222.bindPopup(popup_3214d1e0890453f6c4f577ddcbcdc7a5)
+        ;
+
+        
+    
+    
+            var circle_marker_5f765016436859c94d766bd33e56edc0 = L.circleMarker(
+                [42.3418, -72.5884],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ead3ad77da8c508f08ff9cb082474872 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_11ed8e7cb243686450b8b8b30339bcf8 = $(`<div id="html_11ed8e7cb243686450b8b8b30339bcf8" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Barstow's Longview Farm Digester<br><b>State:</b> Massachusetts<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 7,000,000</div>`)[0];
+                popup_ead3ad77da8c508f08ff9cb082474872.setContent(html_11ed8e7cb243686450b8b8b30339bcf8);
+            
+        
+
+        circle_marker_5f765016436859c94d766bd33e56edc0.bindPopup(popup_ead3ad77da8c508f08ff9cb082474872)
+        ;
+
+        
+    
+    
+            var circle_marker_71c66b87306a3baffa9a7565d5aac56d = L.circleMarker(
+                [45.4977, -95.795],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b7a156bcf1fbcb9927c9c2a2fd4be364 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fdf21b86138e377459d07e3ee9a27d13 = $(`<div id="html_fdf21b86138e377459d07e3ee9a27d13" style="width: 100.0%; height: 100.0%;"><b>Project:</b> District 45 Dairy Digester - Electricity<br><b>State:</b> Minnesota<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 12,088,800</div>`)[0];
+                popup_b7a156bcf1fbcb9927c9c2a2fd4be364.setContent(html_fdf21b86138e377459d07e3ee9a27d13);
+            
+        
+
+        circle_marker_71c66b87306a3baffa9a7565d5aac56d.bindPopup(popup_b7a156bcf1fbcb9927c9c2a2fd4be364)
+        ;
+
+        
+    
+    
+            var circle_marker_f058daf51402d173647e105c0e4bd567 = L.circleMarker(
+                [42.5314, -114.3011],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4cd363d34b18392042112c8de4045eb7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5469845c2eca7917125a39341a19c7fc = $(`<div id="html_5469845c2eca7917125a39341a19c7fc" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Dry Creek Dairy Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 18,527,400</div>`)[0];
+                popup_4cd363d34b18392042112c8de4045eb7.setContent(html_5469845c2eca7917125a39341a19c7fc);
+            
+        
+
+        circle_marker_f058daf51402d173647e105c0e4bd567.bindPopup(popup_4cd363d34b18392042112c8de4045eb7)
+        ;
+
+        
+    
+    
+            var circle_marker_611081d603c43fafdb2cd9919a43c258 = L.circleMarker(
+                [42.2047, -86.1661],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_815a3ca6deb838cb2f8f421ea0151dc6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4872ff07548faf67b8b0136e76793566 = $(`<div id="html_4872ff07548faf67b8b0136e76793566" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Red Arrow Dairy Digester<br><b>State:</b> Michigan<br><b>Digester Type:</b> Unknown or Unspecified<br><b>Electricity Generated (kWh/yr):</b> 3,768,407</div>`)[0];
+                popup_815a3ca6deb838cb2f8f421ea0151dc6.setContent(html_4872ff07548faf67b8b0136e76793566);
+            
+        
+
+        circle_marker_611081d603c43fafdb2cd9919a43c258.bindPopup(popup_815a3ca6deb838cb2f8f421ea0151dc6)
+        ;
+
+        
+    
+    
+            var circle_marker_7c98cc2ed623b94f5b187847e1314d6c = L.circleMarker(
+                [42.7838, -71.0871],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_f5a1a72c914de30a9b4392f890b6d035 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_64f62b2ced06cc447c405180071a2011 = $(`<div id="html_64f62b2ced06cc447c405180071a2011" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Crescent Farm Digester<br><b>State:</b> Massachusetts<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 7,700,000</div>`)[0];
+                popup_f5a1a72c914de30a9b4392f890b6d035.setContent(html_64f62b2ced06cc447c405180071a2011);
+            
+        
+
+        circle_marker_7c98cc2ed623b94f5b187847e1314d6c.bindPopup(popup_f5a1a72c914de30a9b4392f890b6d035)
+        ;
+
+        
+    
+    
+            var circle_marker_4e9f8686a534b4f55afa7a32eff40045 = L.circleMarker(
+                [42.637, -76.1788],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_9b92d686be5f61f3d4cc5c61da148890 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_907555d2de3e392780207c6f7dec422f = $(`<div id="html_907555d2de3e392780207c6f7dec422f" style="width: 100.0%; height: 100.0%;"><b>Project:</b> New Hope View Farm Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,223,560</div>`)[0];
+                popup_9b92d686be5f61f3d4cc5c61da148890.setContent(html_907555d2de3e392780207c6f7dec422f);
+            
+        
+
+        circle_marker_4e9f8686a534b4f55afa7a32eff40045.bindPopup(popup_9b92d686be5f61f3d4cc5c61da148890)
+        ;
+
+        
+    
+    
+            var circle_marker_c287221d64871e65db293c6f276849ab = L.circleMarker(
+                [42.7179, -114.5159],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_8baf202399dc6cac2ffd349068fc7497 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_89cd20ba3032a63e3359de90ae9fadf5 = $(`<div id="html_89cd20ba3032a63e3359de90ae9fadf5" style="width: 100.0%; height: 100.0%;"><b>Project:</b> AgPower Jerome LLC - Double A Dairy Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,671,558</div>`)[0];
+                popup_8baf202399dc6cac2ffd349068fc7497.setContent(html_89cd20ba3032a63e3359de90ae9fadf5);
+            
+        
+
+        circle_marker_c287221d64871e65db293c6f276849ab.bindPopup(popup_8baf202399dc6cac2ffd349068fc7497)
+        ;
+
+        
+    
+    
+            var circle_marker_886215d926f4779f54654c7ec449252b = L.circleMarker(
+                [42.7179, -114.5159],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_0a652e4eabb36140767fc2fdcc327370 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c5c7174b4422818adb639fed608735fa = $(`<div id="html_c5c7174b4422818adb639fed608735fa" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bettencourt Dairy B6 Farm Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 12,000,000</div>`)[0];
+                popup_0a652e4eabb36140767fc2fdcc327370.setContent(html_c5c7174b4422818adb639fed608735fa);
+            
+        
+
+        circle_marker_886215d926f4779f54654c7ec449252b.bindPopup(popup_0a652e4eabb36140767fc2fdcc327370)
+        ;
+
+        
+    
+    
+            var circle_marker_bde6d9e08b517764d7b487d25579d0ba = L.circleMarker(
+                [34.9624, -77.9622],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4ca332f6117de348081445f2e8a91aad = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_06778198a4b503fae0d77a87a3b9f428 = $(`<div id="html_06778198a4b503fae0d77a87a3b9f428" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Optima KV RNG Plant<br><b>State:</b> North Carolina<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 11,000,000</div>`)[0];
+                popup_4ca332f6117de348081445f2e8a91aad.setContent(html_06778198a4b503fae0d77a87a3b9f428);
+            
+        
+
+        circle_marker_bde6d9e08b517764d7b487d25579d0ba.bindPopup(popup_4ca332f6117de348081445f2e8a91aad)
+        ;
+
+        
+    
+    
+            var circle_marker_4e5e06dd01402528e92d5e4ea560ffa7 = L.circleMarker(
+                [36.7248, -120.0625],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_606a49f51eec12c80bfb3ebe15f923af = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f7b974029781e7cabb10e1fd547e68fe = $(`<div id="html_f7b974029781e7cabb10e1fd547e68fe" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bar 20 Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 5,571,360</div>`)[0];
+                popup_606a49f51eec12c80bfb3ebe15f923af.setContent(html_f7b974029781e7cabb10e1fd547e68fe);
+            
+        
+
+        circle_marker_4e5e06dd01402528e92d5e4ea560ffa7.bindPopup(popup_606a49f51eec12c80bfb3ebe15f923af)
+        ;
+
+        
+    
+    
+            var circle_marker_6df9969f60b2b6d956af933e2fa12a41 = L.circleMarker(
+                [44.4583, -87.5031],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_598c3498ec3128034321885437f075eb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_af062718246f3f00ea9f280e4c87e443 = $(`<div id="html_af062718246f3f00ea9f280e4c87e443" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Wakker Dairy Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_598c3498ec3128034321885437f075eb.setContent(html_af062718246f3f00ea9f280e4c87e443);
+            
+        
+
+        circle_marker_6df9969f60b2b6d956af933e2fa12a41.bindPopup(popup_598c3498ec3128034321885437f075eb)
+        ;
+
+        
+    
+    
+            var circle_marker_0945eaea0b0754f33239a3661c215ca5 = L.circleMarker(
+                [42.6653, -76.6166],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b98848ecf3a3ff8793dafeb8651b24bd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_754964e73542c21077aeba5007a10fdd = $(`<div id="html_754964e73542c21077aeba5007a10fdd" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Fessenden Family Dairy Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 3,723,000</div>`)[0];
+                popup_b98848ecf3a3ff8793dafeb8651b24bd.setContent(html_754964e73542c21077aeba5007a10fdd);
+            
+        
+
+        circle_marker_0945eaea0b0754f33239a3661c215ca5.bindPopup(popup_b98848ecf3a3ff8793dafeb8651b24bd)
+        ;
+
+        
+    
+    
+            var circle_marker_8d04f8988e2ad3228cfba570edffc129 = L.circleMarker(
+                [42.6653, -76.6166],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4e50f85d6e9251fbffaaa03768c34c16 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_914e575fe0a86a3a6362645b70e8d94c = $(`<div id="html_914e575fe0a86a3a6362645b70e8d94c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Willet Dairy Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 7,446,000</div>`)[0];
+                popup_4e50f85d6e9251fbffaaa03768c34c16.setContent(html_914e575fe0a86a3a6362645b70e8d94c);
+            
+        
+
+        circle_marker_8d04f8988e2ad3228cfba570edffc129.bindPopup(popup_4e50f85d6e9251fbffaaa03768c34c16)
+        ;
+
+        
+    
+    
+            var circle_marker_63c87af2ae169f953b36a3c7b04634b8 = L.circleMarker(
+                [44.2642, -96.2891],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_55e50fa834cb0afb231fbc83ff1c4e6d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f9c1aeecde8bd0d0f09b19033f35b8e7 = $(`<div id="html_f9c1aeecde8bd0d0f09b19033f35b8e7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Ash Grove Dairy Digester<br><b>State:</b> Minnesota<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,671,558</div>`)[0];
+                popup_55e50fa834cb0afb231fbc83ff1c4e6d.setContent(html_f9c1aeecde8bd0d0f09b19033f35b8e7);
+            
+        
+
+        circle_marker_63c87af2ae169f953b36a3c7b04634b8.bindPopup(popup_55e50fa834cb0afb231fbc83ff1c4e6d)
+        ;
+
+        
+    
+    
+            var circle_marker_a2a861a222e0c18727964e1b2c7303a8 = L.circleMarker(
+                [32.856, -116.904],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_7192a96b39aa9130d41a626b7b2754e7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a8466b481d732ee399ad4ff1fbbf5887 = $(`<div id="html_a8466b481d732ee399ad4ff1fbbf5887" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Van Ommering Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Horizontal Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,899,649</div>`)[0];
+                popup_7192a96b39aa9130d41a626b7b2754e7.setContent(html_a8466b481d732ee399ad4ff1fbbf5887);
+            
+        
+
+        circle_marker_a2a861a222e0c18727964e1b2c7303a8.bindPopup(popup_7192a96b39aa9130d41a626b7b2754e7)
+        ;
+
+        
+    
+    
+            var circle_marker_c543b610de319af6079aec2f1f852ad5 = L.circleMarker(
+                [34.1695, -80.0649],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_adb1a402f2664e86810f5f551befc543 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d972d4a47e8ae03e3bc7c368172991f8 = $(`<div id="html_d972d4a47e8ae03e3bc7c368172991f8" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Collins Chick Farm Digester<br><b>State:</b> South Carolina<br><b>Digester Type:</b> Horizontal Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,020,840</div>`)[0];
+                popup_adb1a402f2664e86810f5f551befc543.setContent(html_d972d4a47e8ae03e3bc7c368172991f8);
+            
+        
+
+        circle_marker_c543b610de319af6079aec2f1f852ad5.bindPopup(popup_adb1a402f2664e86810f5f551befc543)
+        ;
+
+        
+    
+    
+            var circle_marker_f0ecf1ea11b9547bd851836988fbc9ad = L.circleMarker(
+                [44.4702, -93.9026],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ef2ec62fde0e3e24e3d59906762e1325 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_06a2cca7bd6973334bf4a4600f4af786 = $(`<div id="html_06a2cca7bd6973334bf4a4600f4af786" style="width: 100.0%; height: 100.0%;"><b>Project:</b> High Island Dairy Digester<br><b>State:</b> Minnesota<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,839,900</div>`)[0];
+                popup_ef2ec62fde0e3e24e3d59906762e1325.setContent(html_06a2cca7bd6973334bf4a4600f4af786);
+            
+        
+
+        circle_marker_f0ecf1ea11b9547bd851836988fbc9ad.bindPopup(popup_ef2ec62fde0e3e24e3d59906762e1325)
+        ;
+
+        
+    
+    
+            var circle_marker_f41451116f943579c03a5e2ffbb08097 = L.circleMarker(
+                [36.2082, -119.0897],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_969ab45e971301d2e3c3ec60e4cf121e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_826a2efbbe5b0ba5b265cc76a8d6b333 = $(`<div id="html_826a2efbbe5b0ba5b265cc76a8d6b333" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Hilarides Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 5,072,040</div>`)[0];
+                popup_969ab45e971301d2e3c3ec60e4cf121e.setContent(html_826a2efbbe5b0ba5b265cc76a8d6b333);
+            
+        
+
+        circle_marker_f41451116f943579c03a5e2ffbb08097.bindPopup(popup_969ab45e971301d2e3c3ec60e4cf121e)
+        ;
+
+        
+    
+    
+            var circle_marker_8c1f28822358be3e12cf2936aae2f804 = L.circleMarker(
+                [48.9502, -122.4545],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b0124414642ed9c73875bb77bf3e59a8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b7cd404217a24a6f3334a7f97a7ef3b2 = $(`<div id="html_b7cd404217a24a6f3334a7f97a7ef3b2" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Edaleen Cow Power, LLC Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,175,800</div>`)[0];
+                popup_b0124414642ed9c73875bb77bf3e59a8.setContent(html_b7cd404217a24a6f3334a7f97a7ef3b2);
+            
+        
+
+        circle_marker_8c1f28822358be3e12cf2936aae2f804.bindPopup(popup_b0124414642ed9c73875bb77bf3e59a8)
+        ;
+
+        
+    
+    
+            var circle_marker_82a71b91ee0684e06a2922b81c584798 = L.circleMarker(
+                [48.9502, -122.4545],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_c9985a48ae8952338cebd33736a2cae8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7f6a7d7ddcd439ac88230c6907cad48b = $(`<div id="html_7f6a7d7ddcd439ac88230c6907cad48b" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Farm Power Lynden Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,175,800</div>`)[0];
+                popup_c9985a48ae8952338cebd33736a2cae8.setContent(html_7f6a7d7ddcd439ac88230c6907cad48b);
+            
+        
+
+        circle_marker_82a71b91ee0684e06a2922b81c584798.bindPopup(popup_c9985a48ae8952338cebd33736a2cae8)
+        ;
+
+        
+    
+    
+            var circle_marker_44f7bc8b44f6bfc4f70065049ae94516 = L.circleMarker(
+                [48.9502, -122.4545],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_07ab58ae40ab94e47a3edb6735bf9277 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3ec2a386e2914d4e6b18deb02fcc3957 = $(`<div id="html_3ec2a386e2914d4e6b18deb02fcc3957" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Vander Haak Dairy Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_07ab58ae40ab94e47a3edb6735bf9277.setContent(html_3ec2a386e2914d4e6b18deb02fcc3957);
+            
+        
+
+        circle_marker_44f7bc8b44f6bfc4f70065049ae94516.bindPopup(popup_07ab58ae40ab94e47a3edb6735bf9277)
+        ;
+
+        
+    
+    
+            var circle_marker_dc96c05e08168e3952634f214797d2b4 = L.circleMarker(
+                [36.963, -120.0778],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_21a2ee2637a126d94ca9746efb625d76 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ab8be3c27151df914ecced57daffbd19 = $(`<div id="html_ab8be3c27151df914ecced57daffbd19" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Southpoint Ranch Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 6,790,752</div>`)[0];
+                popup_21a2ee2637a126d94ca9746efb625d76.setContent(html_ab8be3c27151df914ecced57daffbd19);
+            
+        
+
+        circle_marker_dc96c05e08168e3952634f214797d2b4.bindPopup(popup_21a2ee2637a126d94ca9746efb625d76)
+        ;
+
+        
+    
+    
+            var circle_marker_6946a86bb981846f03259bb26f3a1087 = L.circleMarker(
+                [36.963, -120.0778],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_150b69650100f3cf453bb910a5a0b565 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6b84bd15bad49b2bd32b8420c6c27c17 = $(`<div id="html_6b84bd15bad49b2bd32b8420c6c27c17" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Verwey-Madera Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 3,728,314</div>`)[0];
+                popup_150b69650100f3cf453bb910a5a0b565.setContent(html_6b84bd15bad49b2bd32b8420c6c27c17);
+            
+        
+
+        circle_marker_6946a86bb981846f03259bb26f3a1087.bindPopup(popup_150b69650100f3cf453bb910a5a0b565)
+        ;
+
+        
+    
+    
+            var circle_marker_71cbf9abfabe514ec4989dccb03f12da = L.circleMarker(
+                [34.896, -78.0541],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_afa6425a92d715080ae5fa7e63ab3893 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_66c2d2b202ec632983a30a0caa93101b = $(`<div id="html_66c2d2b202ec632983a30a0caa93101b" style="width: 100.0%; height: 100.0%;"><b>Project:</b> RES Ag DM 2 - 1 LLC Digester<br><b>State:</b> North Carolina<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,380,000</div>`)[0];
+                popup_afa6425a92d715080ae5fa7e63ab3893.setContent(html_66c2d2b202ec632983a30a0caa93101b);
+            
+        
+
+        circle_marker_71cbf9abfabe514ec4989dccb03f12da.bindPopup(popup_afa6425a92d715080ae5fa7e63ab3893)
+        ;
+
+        
+    
+    
+            var circle_marker_8efe4b96a5a2e1c27bc0667591abf01b = L.circleMarker(
+                [34.896, -78.0541],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_8b1aa6d75cd3ca63b48b7b7e4411a4f5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_16886230cd8d7f8c60e8a9fefb812333 = $(`<div id="html_16886230cd8d7f8c60e8a9fefb812333" style="width: 100.0%; height: 100.0%;"><b>Project:</b> RES Ag DM 4 - 3 LLC Digester<br><b>State:</b> North Carolina<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 7,008,000</div>`)[0];
+                popup_8b1aa6d75cd3ca63b48b7b7e4411a4f5.setContent(html_16886230cd8d7f8c60e8a9fefb812333);
+            
+        
+
+        circle_marker_8efe4b96a5a2e1c27bc0667591abf01b.bindPopup(popup_8b1aa6d75cd3ca63b48b7b7e4411a4f5)
+        ;
+
+        
+    
+    
+            var circle_marker_a09a42579d1fd35258d91a31b6e11b66 = L.circleMarker(
+                [40.5713, -77.3951],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_58262bf8b98beb56559f76a49c67b8bd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e39bc62b5027799237fb9c4da768ceaf = $(`<div id="html_e39bc62b5027799237fb9c4da768ceaf" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Reinford Farms Digester - New genset<br><b>State:</b> Pennsylvania<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,544,296</div>`)[0];
+                popup_58262bf8b98beb56559f76a49c67b8bd.setContent(html_e39bc62b5027799237fb9c4da768ceaf);
+            
+        
+
+        circle_marker_a09a42579d1fd35258d91a31b6e11b66.bindPopup(popup_58262bf8b98beb56559f76a49c67b8bd)
+        ;
+
+        
+    
+    
+            var circle_marker_22665bd9e51bcf3e28b6b8a22d62cf52 = L.circleMarker(
+                [38.3945, -113.0123],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_cca1ee9ee4ce9bd7c62b6c95ceb03b3d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b1f451fc56328791db494e8b0bfd279b = $(`<div id="html_b1f451fc56328791db494e8b0bfd279b" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Blue Mountain Biogas, LLC / Circle 4 Farms Digester<br><b>State:</b> Utah<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 23,827,200</div>`)[0];
+                popup_cca1ee9ee4ce9bd7c62b6c95ceb03b3d.setContent(html_b1f451fc56328791db494e8b0bfd279b);
+            
+        
+
+        circle_marker_22665bd9e51bcf3e28b6b8a22d62cf52.bindPopup(popup_cca1ee9ee4ce9bd7c62b6c95ceb03b3d)
+        ;
+
+        
+    
+    
+            var circle_marker_fa61307d46de55de1b3a56b192d88b3f = L.circleMarker(
+                [37.6375, -121.0028],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_17eebb83859bf38140906278bb05b1bb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bb5a3b826ac9601d3d4928c5d3433436 = $(`<div id="html_bb5a3b826ac9601d3d4928c5d3433436" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Fiscalini Farms Digester<br><b>State:</b> California<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,324,000</div>`)[0];
+                popup_17eebb83859bf38140906278bb05b1bb.setContent(html_bb5a3b826ac9601d3d4928c5d3433436);
+            
+        
+
+        circle_marker_fa61307d46de55de1b3a56b192d88b3f.bindPopup(popup_17eebb83859bf38140906278bb05b1bb)
+        ;
+
+        
+    
+    
+            var circle_marker_b9ca3a54d2182577b48bc8e1f996c2f9 = L.circleMarker(
+                [47.8595, -121.9851],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_94cca524c8da069192ce6da3d5c3e1b6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_419c64b0a29b5a431c6af69338844894 = $(`<div id="html_419c64b0a29b5a431c6af69338844894" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Qualco Energy Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,705,480</div>`)[0];
+                popup_94cca524c8da069192ce6da3d5c3e1b6.setContent(html_419c64b0a29b5a431c6af69338844894);
+            
+        
+
+        circle_marker_b9ca3a54d2182577b48bc8e1f996c2f9.bindPopup(popup_94cca524c8da069192ce6da3d5c3e1b6)
+        ;
+
+        
+    
+    
+            var circle_marker_cab9659ab340c360e1cc11dcfccdab7c = L.circleMarker(
+                [40.7455, -86.7668],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_6738f0dc114e07b1faee2ce0dc7a165c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4dd57218a00a96f98a2dbf114a9d0083 = $(`<div id="html_4dd57218a00a96f98a2dbf114a9d0083" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Waste No Energy Digester<br><b>State:</b> Indiana<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 8,370,000</div>`)[0];
+                popup_6738f0dc114e07b1faee2ce0dc7a165c.setContent(html_4dd57218a00a96f98a2dbf114a9d0083);
+            
+        
+
+        circle_marker_cab9659ab340c360e1cc11dcfccdab7c.bindPopup(popup_6738f0dc114e07b1faee2ce0dc7a165c)
+        ;
+
+        
+    
+    
+            var circle_marker_b0269636447280ecfdc3610454461923 = L.circleMarker(
+                [41.5817, -84.5968],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ef605fe633f01feefaa1d7934ecd9c5d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2316891c0207b705851c4cd75cd05394 = $(`<div id="html_2316891c0207b705851c4cd75cd05394" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bridgewater Dairy, LLC Digester<br><b>State:</b> Ohio<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,100,000</div>`)[0];
+                popup_ef605fe633f01feefaa1d7934ecd9c5d.setContent(html_2316891c0207b705851c4cd75cd05394);
+            
+        
+
+        circle_marker_b0269636447280ecfdc3610454461923.bindPopup(popup_ef605fe633f01feefaa1d7934ecd9c5d)
+        ;
+
+        
+    
+    
+            var circle_marker_a0b0e675361f86161f5b392924a8cc91 = L.circleMarker(
+                [45.5857, -95.9046],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_1ea6327cdcc04db68d86a1542438c6ff = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8fc69b601c52f72d8da9ebe8a3bc6acb = $(`<div id="html_8fc69b601c52f72d8da9ebe8a3bc6acb" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Riverview Dairy Digester - Electricity<br><b>State:</b> Minnesota<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 15,859,980</div>`)[0];
+                popup_1ea6327cdcc04db68d86a1542438c6ff.setContent(html_8fc69b601c52f72d8da9ebe8a3bc6acb);
+            
+        
+
+        circle_marker_a0b0e675361f86161f5b392924a8cc91.bindPopup(popup_1ea6327cdcc04db68d86a1542438c6ff)
+        ;
+
+        
+    
+    
+            var circle_marker_cd1d4f9501d375a7160d60d223d58e7f = L.circleMarker(
+                [45.5857, -95.9046],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b9969edabe6de3620cbda088dd77cd8d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7c3017195e2d00586f18b6d8571d4cf7 = $(`<div id="html_7c3017195e2d00586f18b6d8571d4cf7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> West River Dairy Digester - Electricity<br><b>State:</b> Minnesota<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 15,859,980</div>`)[0];
+                popup_b9969edabe6de3620cbda088dd77cd8d.setContent(html_7c3017195e2d00586f18b6d8571d4cf7);
+            
+        
+
+        circle_marker_cd1d4f9501d375a7160d60d223d58e7f.bindPopup(popup_b9969edabe6de3620cbda088dd77cd8d)
+        ;
+
+        
+    
+    
+            var circle_marker_7467a2a243999a72b80c45428d9297ee = L.circleMarker(
+                [40.1106, -76.5065],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ac5fc82cbe397d46235f2fc8a730222e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7600a836b8b2b7e7e6a4d83dfc89d339 = $(`<div id="html_7600a836b8b2b7e7e6a4d83dfc89d339" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Yippee! Farms Digester<br><b>State:</b> Pennsylvania<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,354,762</div>`)[0];
+                popup_ac5fc82cbe397d46235f2fc8a730222e.setContent(html_7600a836b8b2b7e7e6a4d83dfc89d339);
+            
+        
+
+        circle_marker_7467a2a243999a72b80c45428d9297ee.bindPopup(popup_ac5fc82cbe397d46235f2fc8a730222e)
+        ;
+
+        
+    
+    
+            var circle_marker_e95c5060f56d852b3dc5ba2094d10ba9 = L.circleMarker(
+                [48.4203, -122.3115],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_c5e15935b33e09ecef15d955da63143b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2fd22ea3127d44cef1d7ce1bfcf5e23d = $(`<div id="html_2fd22ea3127d44cef1d7ce1bfcf5e23d" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Farm Power Rexville Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,175,800</div>`)[0];
+                popup_c5e15935b33e09ecef15d955da63143b.setContent(html_2fd22ea3127d44cef1d7ce1bfcf5e23d);
+            
+        
+
+        circle_marker_e95c5060f56d852b3dc5ba2094d10ba9.bindPopup(popup_c5e15935b33e09ecef15d955da63143b)
+        ;
+
+        
+    
+    
+            var circle_marker_f97ab3104a74393aa406b35eb7b37231 = L.circleMarker(
+                [44.3134, -89.9073],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_54d8178dd0e4ceef319ab14d6972e80c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c61fb9d9bde0aab4e2f235b7376a208a = $(`<div id="html_c61fb9d9bde0aab4e2f235b7376a208a" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Central Sands Dairy, LLC Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,307,200</div>`)[0];
+                popup_54d8178dd0e4ceef319ab14d6972e80c.setContent(html_c61fb9d9bde0aab4e2f235b7376a208a);
+            
+        
+
+        circle_marker_f97ab3104a74393aa406b35eb7b37231.bindPopup(popup_54d8178dd0e4ceef319ab14d6972e80c)
+        ;
+
+        
+    
+    
+            var circle_marker_bf6aeca54e03061bc1a071f68715fb7a = L.circleMarker(
+                [44.531, -87.8258],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_6e54bce6cd1fdbe003a3b1d88ee25f7d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_351bc7a5aab7066aad389ff51e7ff0ce = $(`<div id="html_351bc7a5aab7066aad389ff51e7ff0ce" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Dairyland Farm Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,432,560</div>`)[0];
+                popup_6e54bce6cd1fdbe003a3b1d88ee25f7d.setContent(html_351bc7a5aab7066aad389ff51e7ff0ce);
+            
+        
+
+        circle_marker_bf6aeca54e03061bc1a071f68715fb7a.bindPopup(popup_6e54bce6cd1fdbe003a3b1d88ee25f7d)
+        ;
+
+        
+    
+    
+            var circle_marker_31a6e2e58f22d9378dd05b337b17dbdd = L.circleMarker(
+                [41.7161, -90.878],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_b9d69792e2804e1f127c83935b0117f2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7e9c22c90acd4382ac9f842f1ce86366 = $(`<div id="html_7e9c22c90acd4382ac9f842f1ce86366" style="width: 100.0%; height: 100.0%;"><b>Project:</b> AgriReNew, Sievers Family Farms Digester<br><b>State:</b> Iowa<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 6,742,081</div>`)[0];
+                popup_b9d69792e2804e1f127c83935b0117f2.setContent(html_7e9c22c90acd4382ac9f842f1ce86366);
+            
+        
+
+        circle_marker_31a6e2e58f22d9378dd05b337b17dbdd.bindPopup(popup_b9d69792e2804e1f127c83935b0117f2)
+        ;
+
+        
+    
+    
+            var circle_marker_54d1508fc265ec07093014bce33c75c2 = L.circleMarker(
+                [43.0659, -78.2697],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_5f0206592e1e19f0fa1399a01d0b5a1a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e4a3462070748fa13e3b92b73a745d69 = $(`<div id="html_e4a3462070748fa13e3b92b73a745d69" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Lamb Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,350,700</div>`)[0];
+                popup_5f0206592e1e19f0fa1399a01d0b5a1a.setContent(html_e4a3462070748fa13e3b92b73a745d69);
+            
+        
+
+        circle_marker_54d1508fc265ec07093014bce33c75c2.bindPopup(popup_5f0206592e1e19f0fa1399a01d0b5a1a)
+        ;
+
+        
+    
+    
+            var circle_marker_8bc62ac692f4ddeaf10987b9daca409b = L.circleMarker(
+                [43.0659, -78.2697],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_0b0171d61458fe6a2cee70b0abdd2640 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_65523e9806d298a06d61fe408b01561f = $(`<div id="html_65523e9806d298a06d61fe408b01561f" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Lamb Farms Digester: Brightmark RNG<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,350,700</div>`)[0];
+                popup_0b0171d61458fe6a2cee70b0abdd2640.setContent(html_65523e9806d298a06d61fe408b01561f);
+            
+        
+
+        circle_marker_8bc62ac692f4ddeaf10987b9daca409b.bindPopup(popup_0b0171d61458fe6a2cee70b0abdd2640)
+        ;
+
+        
+    
+    
+            var circle_marker_76a6d6190afe0bc5a08431d77cb502e7 = L.circleMarker(
+                [30.0383, -82.9404],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_95814fc157fce09fda8a18738f0d04a2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c621eedd3794d2cbefc61a77d247c385 = $(`<div id="html_c621eedd3794d2cbefc61a77d247c385" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Southern Cross Dairy (FL) Digester<br><b>State:</b> Florida<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_95814fc157fce09fda8a18738f0d04a2.setContent(html_c621eedd3794d2cbefc61a77d247c385);
+            
+        
+
+        circle_marker_76a6d6190afe0bc5a08431d77cb502e7.bindPopup(popup_95814fc157fce09fda8a18738f0d04a2)
+        ;
+
+        
+    
+    
+            var circle_marker_a1711278ac87ed63f4292d3bc0a3fb16 = L.circleMarker(
+                [44.7088, -75.4717],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ab3be1538cba474d8978380f907e8494 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3618e6595f70d528412e5b6200817e4c = $(`<div id="html_3618e6595f70d528412e5b6200817e4c" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Woodcrest Dairy Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 8,386,999</div>`)[0];
+                popup_ab3be1538cba474d8978380f907e8494.setContent(html_3618e6595f70d528412e5b6200817e4c);
+            
+        
+
+        circle_marker_a1711278ac87ed63f4292d3bc0a3fb16.bindPopup(popup_ab3be1538cba474d8978380f907e8494)
+        ;
+
+        
+    
+    
+            var circle_marker_2554b516886a8a9afd902a6ba99b041a = L.circleMarker(
+                [46.3311, -120.0924],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_de5b64846e68de002463f7dced3b33b6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9a3e7e3159746abcc827ee722e240f4e = $(`<div id="html_9a3e7e3159746abcc827ee722e240f4e" style="width: 100.0%; height: 100.0%;"><b>Project:</b> G DeRuyter & Sons Dairy Digester<br><b>State:</b> Washington<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 9,881,280</div>`)[0];
+                popup_de5b64846e68de002463f7dced3b33b6.setContent(html_9a3e7e3159746abcc827ee722e240f4e);
+            
+        
+
+        circle_marker_2554b516886a8a9afd902a6ba99b041a.bindPopup(popup_de5b64846e68de002463f7dced3b33b6)
+        ;
+
+        
+    
+    
+            var circle_marker_81d7959e1add6a96d0088efd87191b07 = L.circleMarker(
+                [42.7156, -78.0056],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_84b2c463f22cf51f3b85cbf25ff19780 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a4b75f07ae30391410a623e94c647d52 = $(`<div id="html_a4b75f07ae30391410a623e94c647d52" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Gardeau Crest Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_84b2c463f22cf51f3b85cbf25ff19780.setContent(html_a4b75f07ae30391410a623e94c647d52);
+            
+        
+
+        circle_marker_81d7959e1add6a96d0088efd87191b07.bindPopup(popup_84b2c463f22cf51f3b85cbf25ff19780)
+        ;
+
+        
+    
+    
+            var circle_marker_36b60d0ef0ac2573de9187df2a65aa02 = L.circleMarker(
+                [44.5784, -73.5268],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_16134379d363fc7285a65f6b714dbe79 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8422075479669ba706c84312302fb31b = $(`<div id="html_8422075479669ba706c84312302fb31b" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Adirondack Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,506,180</div>`)[0];
+                popup_16134379d363fc7285a65f6b714dbe79.setContent(html_8422075479669ba706c84312302fb31b);
+            
+        
+
+        circle_marker_36b60d0ef0ac2573de9187df2a65aa02.bindPopup(popup_16134379d363fc7285a65f6b714dbe79)
+        ;
+
+        
+    
+    
+            var circle_marker_6bd39d881f6140c814d1990129c6dfda = L.circleMarker(
+                [43.9116, -88.7289],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ce620b80225a7c0a30be337a090e4f5e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_88399f4beb0fc6ff9d2a5aac3bd4aad6 = $(`<div id="html_88399f4beb0fc6ff9d2a5aac3bd4aad6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> UW Oshkosh Foundation, Rosendale Biodigester, LLC Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 12,491,760</div>`)[0];
+                popup_ce620b80225a7c0a30be337a090e4f5e.setContent(html_88399f4beb0fc6ff9d2a5aac3bd4aad6);
+            
+        
+
+        circle_marker_6bd39d881f6140c814d1990129c6dfda.bindPopup(popup_ce620b80225a7c0a30be337a090e4f5e)
+        ;
+
+        
+    
+    
+            var circle_marker_dbcb65cdf62827bcc47a83cd07665eac = L.circleMarker(
+                [35.9785, -119.3003],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_55f2ae6904871d8383e01c98e92c1c9c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bd1dc25f0c03ba9b84229378cc29ce54 = $(`<div id="html_bd1dc25f0c03ba9b84229378cc29ce54" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Pixley Biogas LLC Digester<br><b>State:</b> California<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 9,709,000</div>`)[0];
+                popup_55f2ae6904871d8383e01c98e92c1c9c.setContent(html_bd1dc25f0c03ba9b84229378cc29ce54);
+            
+        
+
+        circle_marker_dbcb65cdf62827bcc47a83cd07665eac.bindPopup(popup_55f2ae6904871d8383e01c98e92c1c9c)
+        ;
+
+        
+    
+    
+            var circle_marker_7e9cab8f21412e3df844556b807fbe37 = L.circleMarker(
+                [41.3483, -86.3187],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_d3d4a4d72d4b6f227c17dc08aa7d6253 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_1087db0597430c0b8e5b2de427a53b85 = $(`<div id="html_1087db0597430c0b8e5b2de427a53b85" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Homestead Dairy Digester<br><b>State:</b> Indiana<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 7,446,000</div>`)[0];
+                popup_d3d4a4d72d4b6f227c17dc08aa7d6253.setContent(html_1087db0597430c0b8e5b2de427a53b85);
+            
+        
+
+        circle_marker_7e9cab8f21412e3df844556b807fbe37.bindPopup(popup_d3d4a4d72d4b6f227c17dc08aa7d6253)
+        ;
+
+        
+    
+    
+            var circle_marker_7bc9c8907332854a2ae46dbd481d94bf = L.circleMarker(
+                [40.9375, -87.1684],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_d54fdb7ef0e57717ed042041249b591d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7671d8be926582f0d19fb0a37c81bb65 = $(`<div id="html_7671d8be926582f0d19fb0a37c81bb65" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Hidden View Digester<br><b>State:</b> Indiana<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 7,073,700</div>`)[0];
+                popup_d54fdb7ef0e57717ed042041249b591d.setContent(html_7671d8be926582f0d19fb0a37c81bb65);
+            
+        
+
+        circle_marker_7bc9c8907332854a2ae46dbd481d94bf.bindPopup(popup_d54fdb7ef0e57717ed042041249b591d)
+        ;
+
+        
+    
+    
+            var circle_marker_c4949136614a476c8b88d7ba9df6a20e = L.circleMarker(
+                [45.0154, -96.5712],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_d2fe2dbc4143b91558dd577db8e7e245 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e5147f7199c54ff53a55e29b6e80cd02 = $(`<div id="html_e5147f7199c54ff53a55e29b6e80cd02" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Victory Jersey Farm Digester<br><b>State:</b> South Dakota<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 4,525,400</div>`)[0];
+                popup_d2fe2dbc4143b91558dd577db8e7e245.setContent(html_e5147f7199c54ff53a55e29b6e80cd02);
+            
+        
+
+        circle_marker_c4949136614a476c8b88d7ba9df6a20e.bindPopup(popup_d2fe2dbc4143b91558dd577db8e7e245)
+        ;
+
+        
+    
+    
+            var circle_marker_723c46cfa2a7e9e724a02a223c33ca3c = L.circleMarker(
+                [40.7492, -86.8743],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_e58734fbe48a4904a98bcaac1a688f74 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f23ab62825f380855e7c2d3ccc2a2377 = $(`<div id="html_f23ab62825f380855e7c2d3ccc2a2377" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Bio Town Ag, Inc. Digester<br><b>State:</b> Indiana<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 70,364,700</div>`)[0];
+                popup_e58734fbe48a4904a98bcaac1a688f74.setContent(html_f23ab62825f380855e7c2d3ccc2a2377);
+            
+        
+
+        circle_marker_723c46cfa2a7e9e724a02a223c33ca3c.bindPopup(popup_e58734fbe48a4904a98bcaac1a688f74)
+        ;
+
+        
+    
+    
+            var circle_marker_50be2c1fc067aee30f1f54b364194838 = L.circleMarker(
+                [40.7492, -86.8743],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_5628129a9797c78cc733802ab463b252 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ff3127f436f46f2879cdfefa859a65c6 = $(`<div id="html_ff3127f436f46f2879cdfefa859a65c6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Reynolds RNG<br><b>State:</b> Indiana<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 8,199,563</div>`)[0];
+                popup_5628129a9797c78cc733802ab463b252.setContent(html_ff3127f436f46f2879cdfefa859a65c6);
+            
+        
+
+        circle_marker_50be2c1fc067aee30f1f54b364194838.bindPopup(popup_5628129a9797c78cc733802ab463b252)
+        ;
+
+        
+    
+    
+            var circle_marker_1f719e2ef0db8abc670c2d44deafb94a = L.circleMarker(
+                [45.4864, -91.7447],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4f7434f16840f8b6fb9846da6e51ed3a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f9836058952f0f9948c014dd6446f5d0 = $(`<div id="html_f9836058952f0f9948c014dd6446f5d0" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Norswiss Farms Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 6,450,000</div>`)[0];
+                popup_4f7434f16840f8b6fb9846da6e51ed3a.setContent(html_f9836058952f0f9948c014dd6446f5d0);
+            
+        
+
+        circle_marker_1f719e2ef0db8abc670c2d44deafb94a.bindPopup(popup_4f7434f16840f8b6fb9846da6e51ed3a)
+        ;
+
+        
+    
+    
+            var circle_marker_50fab8b57a4cf904d91d60ea3febe221 = L.circleMarker(
+                [43.362, -92.5538],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_69cb42f08d4fb80c6587a974f57e8a35 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4e621e642bd112ffe2f99bbf20c06825 = $(`<div id="html_4e621e642bd112ffe2f99bbf20c06825" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Linkenmeyer Family Feeders / Link Energy, LLC Digester<br><b>State:</b> Iowa<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,000,000</div>`)[0];
+                popup_69cb42f08d4fb80c6587a974f57e8a35.setContent(html_4e621e642bd112ffe2f99bbf20c06825);
+            
+        
+
+        circle_marker_50fab8b57a4cf904d91d60ea3febe221.bindPopup(popup_69cb42f08d4fb80c6587a974f57e8a35)
+        ;
+
+        
+    
+    
+            var circle_marker_8019c3268673576d25e7b465c05731b0 = L.circleMarker(
+                [37.6028, -121.0425],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_9a193e015793253db0b2f1f21e7ded1a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4edb7903c2b71c0f09247134e8f54184 = $(`<div id="html_4edb7903c2b71c0f09247134e8f54184" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Open Sky Ranch Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 6,464,301</div>`)[0];
+                popup_9a193e015793253db0b2f1f21e7ded1a.setContent(html_4edb7903c2b71c0f09247134e8f54184);
+            
+        
+
+        circle_marker_8019c3268673576d25e7b465c05731b0.bindPopup(popup_9a193e015793253db0b2f1f21e7ded1a)
+        ;
+
+        
+    
+    
+            var circle_marker_cf676411117c23121fd835c856b36710 = L.circleMarker(
+                [43.7208, -112.1284],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3e0b2205352f8e8b1fb937fdc520ec51 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5cd93a1d999f07239f539496ed508f04 = $(`<div id="html_5cd93a1d999f07239f539496ed508f04" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Kettle Butte Dairy Digester<br><b>State:</b> Idaho<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 12,658,200</div>`)[0];
+                popup_3e0b2205352f8e8b1fb937fdc520ec51.setContent(html_5cd93a1d999f07239f539496ed508f04);
+            
+        
+
+        circle_marker_cf676411117c23121fd835c856b36710.bindPopup(popup_3e0b2205352f8e8b1fb937fdc520ec51)
+        ;
+
+        
+    
+    
+            var circle_marker_c9a95dd25c61a94c4f01d29770727976 = L.circleMarker(
+                [43.2053, -96.295],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_064efd70abcaabe87597cc257f1137c6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4928fc31b62f52599e0d8ebb6577e3fb = $(`<div id="html_4928fc31b62f52599e0d8ebb6577e3fb" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Winding Meadows Dairy Digester<br><b>State:</b> Iowa<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,682,003</div>`)[0];
+                popup_064efd70abcaabe87597cc257f1137c6.setContent(html_4928fc31b62f52599e0d8ebb6577e3fb);
+            
+        
+
+        circle_marker_c9a95dd25c61a94c4f01d29770727976.bindPopup(popup_064efd70abcaabe87597cc257f1137c6)
+        ;
+
+        
+    
+    
+            var circle_marker_1ebbb0d168da780fcb787213afa78a00 = L.circleMarker(
+                [43.6092, -72.9783],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_e8ff7d01e9c0eca6489c6bedc445e56f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_aafff3cedd5138f01788e491a2149462 = $(`<div id="html_aafff3cedd5138f01788e491a2149462" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Jordan Farms / AGreen Energy, LLC Digester<br><b>State:</b> Massachusetts<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,700,000</div>`)[0];
+                popup_e8ff7d01e9c0eca6489c6bedc445e56f.setContent(html_aafff3cedd5138f01788e491a2149462);
+            
+        
+
+        circle_marker_1ebbb0d168da780fcb787213afa78a00.bindPopup(popup_e8ff7d01e9c0eca6489c6bedc445e56f)
+        ;
+
+        
+    
+    
+            var circle_marker_2cfa7c5d7280faba053eef19b9d3e0b7 = L.circleMarker(
+                [42.7835, -76.5589],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_8d927ad5ea407a816f2668739200ee00 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4d16677950d9e72e72449f0002d29336 = $(`<div id="html_4d16677950d9e72e72449f0002d29336" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Allen Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,506,180</div>`)[0];
+                popup_8d927ad5ea407a816f2668739200ee00.setContent(html_4d16677950d9e72e72449f0002d29336);
+            
+        
+
+        circle_marker_2cfa7c5d7280faba053eef19b9d3e0b7.bindPopup(popup_8d927ad5ea407a816f2668739200ee00)
+        ;
+
+        
+    
+    
+            var circle_marker_d95892d5e87548336e898a6e0b9f1eb7 = L.circleMarker(
+                [42.7835, -76.5589],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_05097a2ce7f2474db676f357993f910c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_59d8e3f806bdb2054246e14e1e9aebbf = $(`<div id="html_59d8e3f806bdb2054246e14e1e9aebbf" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Sunnyside Farms Digester<br><b>State:</b> New York<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,615,552</div>`)[0];
+                popup_05097a2ce7f2474db676f357993f910c.setContent(html_59d8e3f806bdb2054246e14e1e9aebbf);
+            
+        
+
+        circle_marker_d95892d5e87548336e898a6e0b9f1eb7.bindPopup(popup_05097a2ce7f2474db676f357993f910c)
+        ;
+
+        
+    
+    
+            var circle_marker_9b5ed5400712b59d94c74520ab07dacb = L.circleMarker(
+                [43.729, -87.8266],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_c47004d73c5d47793e5a83f686771996 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_16c7b01c7bbd1816a2697a53e47a2675 = $(`<div id="html_16c7b01c7bbd1816a2697a53e47a2675" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Majestic Crossing Dairy, LLC Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Plug Flow - Unspecified<br><b>Electricity Generated (kWh/yr):</b> 5,082,187</div>`)[0];
+                popup_c47004d73c5d47793e5a83f686771996.setContent(html_16c7b01c7bbd1816a2697a53e47a2675);
+            
+        
+
+        circle_marker_9b5ed5400712b59d94c74520ab07dacb.bindPopup(popup_c47004d73c5d47793e5a83f686771996)
+        ;
+
+        
+    
+    
+            var circle_marker_ce17e1656c62d64eb905134710eadc94 = L.circleMarker(
+                [45.65901, -122.64871],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_23b8ebb6b9ba03be2e7dd2d7c63a54c6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a9e42d0ed9cd26678f5251b01c652f7d = $(`<div id="html_a9e42d0ed9cd26678f5251b01c652f7d" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Mooody County Dairy Digester<br><b>State:</b> South Dakota<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,027,567</div>`)[0];
+                popup_23b8ebb6b9ba03be2e7dd2d7c63a54c6.setContent(html_a9e42d0ed9cd26678f5251b01c652f7d);
+            
+        
+
+        circle_marker_ce17e1656c62d64eb905134710eadc94.bindPopup(popup_23b8ebb6b9ba03be2e7dd2d7c63a54c6)
+        ;
+
+        
+    
+    
+            var circle_marker_28db5838036fe710e0ba5f07425bd42b = L.circleMarker(
+                [42.0148, -93.1653],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_8be153caf20941ebde7ce2a7417c3099 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d39edc10a4abddb4edd418c25172f4a4 = $(`<div id="html_d39edc10a4abddb4edd418c25172f4a4" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Marshall Ridge Farms Digester<br><b>State:</b> Iowa<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,083,036</div>`)[0];
+                popup_8be153caf20941ebde7ce2a7417c3099.setContent(html_d39edc10a4abddb4edd418c25172f4a4);
+            
+        
+
+        circle_marker_28db5838036fe710e0ba5f07425bd42b.bindPopup(popup_8be153caf20941ebde7ce2a7417c3099)
+        ;
+
+        
+    
+    
+            var circle_marker_bb33463b61e719abe608d572fa28f452 = L.circleMarker(
+                [32.2147, -98.2205],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_9953667c7a215cfc7fbbddb3602fecd7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_14fa9596272292dbc3b7ddd3906f0db6 = $(`<div id="html_14fa9596272292dbc3b7ddd3906f0db6" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Huckabay Ridge Digester<br><b>State:</b> Texas<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,563,660</div>`)[0];
+                popup_9953667c7a215cfc7fbbddb3602fecd7.setContent(html_14fa9596272292dbc3b7ddd3906f0db6);
+            
+        
+
+        circle_marker_bb33463b61e719abe608d572fa28f452.bindPopup(popup_9953667c7a215cfc7fbbddb3602fecd7)
+        ;
+
+        
+    
+    
+            var circle_marker_ff74175b310f1d44df37ec6c0ea80e66 = L.circleMarker(
+                [44.8228, -87.366],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_13786369d30ef07a9146ab476a920cae = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3cdba00682ddcdcd6b10f187937bbb7f = $(`<div id="html_3cdba00682ddcdcd6b10f187937bbb7f" style="width: 100.0%; height: 100.0%;"><b>Project:</b> S & S Jerseyland Dairy Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,069,269</div>`)[0];
+                popup_13786369d30ef07a9146ab476a920cae.setContent(html_3cdba00682ddcdcd6b10f187937bbb7f);
+            
+        
+
+        circle_marker_ff74175b310f1d44df37ec6c0ea80e66.bindPopup(popup_13786369d30ef07a9146ab476a920cae)
+        ;
+
+        
+    
+    
+            var circle_marker_ae825a89ddc54405d3731bd0e9b263cd = L.circleMarker(
+                [43.1825, -89.2362],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_5830fd671c36cc11b4cb544cdc2829c2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2913e676ad6b8c46ff9f1812ab1bbd33 = $(`<div id="html_2913e676ad6b8c46ff9f1812ab1bbd33" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Maunesha River Dairy Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 5,000,000</div>`)[0];
+                popup_5830fd671c36cc11b4cb544cdc2829c2.setContent(html_2913e676ad6b8c46ff9f1812ab1bbd33);
+            
+        
+
+        circle_marker_ae825a89ddc54405d3731bd0e9b263cd.bindPopup(popup_5830fd671c36cc11b4cb544cdc2829c2)
+        ;
+
+        
+    
+    
+            var circle_marker_2f8bf090d94378539a9389462d537db7 = L.circleMarker(
+                [41.9915, -72.5965],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_73a703ff4301372d2570e335ba64f7be = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_958d9ea9c0554a6c0de6e77b51db3fa1 = $(`<div id="html_958d9ea9c0554a6c0de6e77b51db3fa1" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Fort Hill Farms Digester<br><b>State:</b> Connecticut<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 3,500,000</div>`)[0];
+                popup_73a703ff4301372d2570e335ba64f7be.setContent(html_958d9ea9c0554a6c0de6e77b51db3fa1);
+            
+        
+
+        circle_marker_2f8bf090d94378539a9389462d537db7.bindPopup(popup_73a703ff4301372d2570e335ba64f7be)
+        ;
+
+        
+    
+    
+            var circle_marker_96e12f6898ca2c9d5eb028e6072147f7 = L.circleMarker(
+                [45.4562, -123.8331],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_ba9797d8ed5d0e5e464106181369e1f0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_29131776d98e2c54a9f3ccf1197b683a = $(`<div id="html_29131776d98e2c54a9f3ccf1197b683a" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Farm Power Misty Meadow Digester<br><b>State:</b> Oregon<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 5,700,000</div>`)[0];
+                popup_ba9797d8ed5d0e5e464106181369e1f0.setContent(html_29131776d98e2c54a9f3ccf1197b683a);
+            
+        
+
+        circle_marker_96e12f6898ca2c9d5eb028e6072147f7.bindPopup(popup_ba9797d8ed5d0e5e464106181369e1f0)
+        ;
+
+        
+    
+    
+            var circle_marker_9f1093d59eec0beadbe3e64a0085493e = L.circleMarker(
+                [45.4562, -123.8331],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_fe8e18b82a369f1f58184e0d79c667b7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6447a80eba4296aadda0f661dc1b7c1a = $(`<div id="html_6447a80eba4296aadda0f661dc1b7c1a" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Farm Power Tillamook Digester<br><b>State:</b> Oregon<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 8,234,400</div>`)[0];
+                popup_fe8e18b82a369f1f58184e0d79c667b7.setContent(html_6447a80eba4296aadda0f661dc1b7c1a);
+            
+        
+
+        circle_marker_9f1093d59eec0beadbe3e64a0085493e.bindPopup(popup_fe8e18b82a369f1f58184e0d79c667b7)
+        ;
+
+        
+    
+    
+            var circle_marker_01234e967c61a0c866ef8a3655b41e0e = L.circleMarker(
+                [45.4562, -123.8331],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_bd28f92bd0ff738c450931a54785d0d1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ccb870a03e14b73fafe266cee7f39049 = $(`<div id="html_ccb870a03e14b73fafe266cee7f39049" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Port of Tillamook Bay Digester<br><b>State:</b> Oregon<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 8,935,200</div>`)[0];
+                popup_bd28f92bd0ff738c450931a54785d0d1.setContent(html_ccb870a03e14b73fafe266cee7f39049);
+            
+        
+
+        circle_marker_01234e967c61a0c866ef8a3655b41e0e.bindPopup(popup_bd28f92bd0ff738c450931a54785d0d1)
+        ;
+
+        
+    
+    
+            var circle_marker_2c3e4b992a02280310166173e861524f = L.circleMarker(
+                [36.0572, -119.3135],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_e3f6f04a54c56ffe8ee894a79cf8bdb2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_44290eb506b85539c3437b9a10f14470 = $(`<div id="html_44290eb506b85539c3437b9a10f14470" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Van Beek Brothers Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 5,439,007</div>`)[0];
+                popup_e3f6f04a54c56ffe8ee894a79cf8bdb2.setContent(html_44290eb506b85539c3437b9a10f14470);
+            
+        
+
+        circle_marker_2c3e4b992a02280310166173e861524f.bindPopup(popup_e3f6f04a54c56ffe8ee894a79cf8bdb2)
+        ;
+
+        
+    
+    
+            var circle_marker_f88369dee90ea90ffc83016c67233795 = L.circleMarker(
+                [33.488, -112.9308],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_aa14019e8de0495bdab0b6086164c7e2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_44e75771da757950587f078dbf27fb17 = $(`<div id="html_44e75771da757950587f078dbf27fb17" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Tonopah Dairy Digester<br><b>State:</b> Arizona<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 6,214,547</div>`)[0];
+                popup_aa14019e8de0495bdab0b6086164c7e2.setContent(html_44e75771da757950587f078dbf27fb17);
+            
+        
+
+        circle_marker_f88369dee90ea90ffc83016c67233795.bindPopup(popup_aa14019e8de0495bdab0b6086164c7e2)
+        ;
+
+        
+    
+    
+            var circle_marker_73f30603841687d075e267c79520d9ce = L.circleMarker(
+                [29.6092, -82.8147],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_3ccdb4330bac05ce6f64586182435cde = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6afd11bca21abf45bf895fc49f84c521 = $(`<div id="html_6afd11bca21abf45bf895fc49f84c521" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Alliance Dairy Digester<br><b>State:</b> Florida<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 7,446,000</div>`)[0];
+                popup_3ccdb4330bac05ce6f64586182435cde.setContent(html_6afd11bca21abf45bf895fc49f84c521);
+            
+        
+
+        circle_marker_73f30603841687d075e267c79520d9ce.bindPopup(popup_3ccdb4330bac05ce6f64586182435cde)
+        ;
+
+        
+    
+    
+            var circle_marker_839e9a6aef3c49d62f4ac74f91d6453a = L.circleMarker(
+                [29.6092, -82.8147],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_36f14d8e51be9d31376e1dd01a836c84 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_763e90afe0e88a150b9da66f399dafd7 = $(`<div id="html_763e90afe0e88a150b9da66f399dafd7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Hampton Feed Lot Digester<br><b>State:</b> Missouri<br><b>Digester Type:</b> Induced Blanket Reactor<br><b>Electricity Generated (kWh/yr):</b> 4,467,600</div>`)[0];
+                popup_36f14d8e51be9d31376e1dd01a836c84.setContent(html_763e90afe0e88a150b9da66f399dafd7);
+            
+        
+
+        circle_marker_839e9a6aef3c49d62f4ac74f91d6453a.bindPopup(popup_36f14d8e51be9d31376e1dd01a836c84)
+        ;
+
+        
+    
+    
+            var circle_marker_26bbe66cd84a96f6f35b611fc918f0b6 = L.circleMarker(
+                [36.3276, -119.3269],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_cba6d81b325faa76738ac54856d098aa = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bb00aad2201c3a99317a9bde73691cb7 = $(`<div id="html_bb00aad2201c3a99317a9bde73691cb7" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Moonlight Dairy Digester<br><b>State:</b> California<br><b>Digester Type:</b> Covered Lagoon<br><b>Electricity Generated (kWh/yr):</b> 6,000,000</div>`)[0];
+                popup_cba6d81b325faa76738ac54856d098aa.setContent(html_bb00aad2201c3a99317a9bde73691cb7);
+            
+        
+
+        circle_marker_26bbe66cd84a96f6f35b611fc918f0b6.bindPopup(popup_cba6d81b325faa76738ac54856d098aa)
+        ;
+
+        
+    
+    
+            var circle_marker_461d432d74799480df945e8aecb5ee03 = L.circleMarker(
+                [41.5862, -84.4349],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_4191f7e8c5dcbb879982e5f4c815bf94 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_dc749676c076f60bccde66c9460d4d57 = $(`<div id="html_dc749676c076f60bccde66c9460d4d57" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Mill Creek Dairy Digester<br><b>State:</b> Ohio<br><b>Digester Type:</b> Complete Mix<br><b>Electricity Generated (kWh/yr):</b> 2,978,400</div>`)[0];
+                popup_4191f7e8c5dcbb879982e5f4c815bf94.setContent(html_dc749676c076f60bccde66c9460d4d57);
+            
+        
+
+        circle_marker_461d432d74799480df945e8aecb5ee03.bindPopup(popup_4191f7e8c5dcbb879982e5f4c815bf94)
+        ;
+
+        
+    
+    
+            var circle_marker_a7122e023cc83c589e4e24c30132cae8 = L.circleMarker(
+                [44.3214, -88.9337],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_472ffd0e2cebcf76c6b60b5d91f05053 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6b32348eefbddda96d071821571f4d89 = $(`<div id="html_6b32348eefbddda96d071821571f4d89" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Quantum Dairy Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 3,350,700</div>`)[0];
+                popup_472ffd0e2cebcf76c6b60b5d91f05053.setContent(html_6b32348eefbddda96d071821571f4d89);
+            
+        
+
+        circle_marker_a7122e023cc83c589e4e24c30132cae8.bindPopup(popup_472ffd0e2cebcf76c6b60b5d91f05053)
+        ;
+
+        
+    
+    
+            var circle_marker_de73d5f8dd6e8169263cfafdd9d3e795 = L.circleMarker(
+                [42.3141, -83.0368],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_bbfea981a04ad67d9b5a8957923710a0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2cb4d536412ed126215c911c0cdf86be = $(`<div id="html_2cb4d536412ed126215c911c0cdf86be" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Wolf Creek Dairy Digester<br><b>State:</b> Colorado<br><b>Digester Type:</b> Mixed Plug Flow<br><b>Electricity Generated (kWh/yr):</b> 8,299,005</div>`)[0];
+                popup_bbfea981a04ad67d9b5a8957923710a0.setContent(html_2cb4d536412ed126215c911c0cdf86be);
+            
+        
+
+        circle_marker_de73d5f8dd6e8169263cfafdd9d3e795.bindPopup(popup_bbfea981a04ad67d9b5a8957923710a0)
+        ;
+
+        
+    
+    
+            var circle_marker_b07ee7d46f50e8c3c4c0aed88c9987b6 = L.circleMarker(
+                [40.0363, 74.6178],
+                {"bubblingMouseEvents": true, "color": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "dashArray": null, "dashOffset": null, "fill": true, "fillColor": [0.403921568627451, 0.0, 0.12156862745098039, 1.0], "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58);
+        
+    
+        var popup_6c7c5c54fdbe71b8b9455f82a0003b84 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7b16888552a893df6700e2459d2a7f70 = $(`<div id="html_7b16888552a893df6700e2459d2a7f70" style="width: 100.0%; height: 100.0%;"><b>Project:</b> Tinedale Farms Digester<br><b>State:</b> Wisconsin<br><b>Digester Type:</b> Fixed Film/Attached Media<br><b>Electricity Generated (kWh/yr):</b> 5,584,500</div>`)[0];
+                popup_6c7c5c54fdbe71b8b9455f82a0003b84.setContent(html_7b16888552a893df6700e2459d2a7f70);
+            
+        
+
+        circle_marker_b07ee7d46f50e8c3c4c0aed88c9987b6.bindPopup(popup_6c7c5c54fdbe71b8b9455f82a0003b84)
+        ;
+
+        
+    
+    
+            marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58.addTo(map_3b91eed035c726d0f732158d9dc879f6);
+        
+    
+    var color_map_b6756bb6f30a35b9b01472a1c0a3b83a = {};
+
+    
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.color = d3.scale.threshold()
+              .domain([2978400.0, 3113442.6853707414, 3248485.370741483, 3383528.0561122242, 3518570.7414829656, 3653613.4268537075, 3788656.112224449, 3923698.7975951903, 4058741.4829659318, 4193784.1683366736, 4328826.853707415, 4463869.539078156, 4598912.224448898, 4733954.909819639, 4868997.595190381, 5004040.280561122, 5139082.9659318635, 5274125.651302606, 5409168.336673347, 5544211.022044089, 5679253.70741483, 5814296.3927855715, 5949339.078156313, 6084381.763527054, 6219424.448897796, 6354467.134268537, 6489509.819639279, 6624552.50501002, 6759595.190380761, 6894637.875751503, 7029680.561122244, 7164723.246492986, 7299765.931863727, 7434808.617234469, 7569851.302605211, 7704893.987975952, 7839936.673346694, 7974979.358717435, 8110022.044088176, 8245064.729458918, 8380107.414829659, 8515150.1002004, 8650192.785571143, 8785235.470941883, 8920278.156312626, 9055320.841683365, 9190363.527054109, 9325406.21242485, 9460448.897795592, 9595491.583166333, 9730534.268537074, 9865576.953907816, 10000619.639278557, 10135662.324649299, 10270705.01002004, 10405747.695390781, 10540790.380761523, 10675833.066132264, 10810875.751503006, 10945918.436873747, 11080961.122244488, 11216003.807615232, 11351046.492985971, 11486089.178356713, 11621131.863727454, 11756174.549098196, 11891217.234468939, 12026259.91983968, 12161302.605210422, 12296345.290581163, 12431387.975951904, 12566430.661322646, 12701473.346693387, 12836516.032064129, 12971558.71743487, 13106601.402805611, 13241644.088176353, 13376686.773547094, 13511729.458917836, 13646772.144288577, 13781814.829659319, 13916857.51503006, 14051900.200400801, 14186942.885771543, 14321985.571142284, 14457028.256513026, 14592070.941883767, 14727113.627254508, 14862156.31262525, 14997198.997995991, 15132241.683366733, 15267284.368737474, 15402327.054108217, 15537369.739478959, 15672412.4248497, 15807455.110220442, 15942497.795591183, 16077540.480961924, 16212583.166332666, 16347625.851703407, 16482668.537074149, 16617711.22244489, 16752753.907815631, 16887796.59318637, 17022839.278557114, 17157881.963927858, 17292924.649298597, 17427967.334669337, 17563010.02004008, 17698052.705410823, 17833095.390781563, 17968138.076152302, 18103180.761523046, 18238223.44689379, 18373266.13226453, 18508308.817635268, 18643351.50300601, 18778394.188376755, 18913436.873747494, 19048479.559118237, 19183522.244488977, 19318564.92985972, 19453607.615230463, 19588650.300601203, 19723692.985971943, 19858735.671342686, 19993778.356713425, 20128821.04208417, 20263863.72745491, 20398906.41282565, 20533949.09819639, 20668991.783567134, 20804034.468937878, 20939077.154308617, 21074119.83967936, 21209162.5250501, 21344205.210420843, 21479247.895791583, 21614290.581162326, 21749333.266533066, 21884375.95190381, 22019418.63727455, 22154461.32264529, 22289504.00801603, 22424546.693386775, 22559589.378757514, 22694632.064128257, 22829674.749498997, 22964717.43486974, 23099760.12024048, 23234802.805611223, 23369845.490981963, 23504888.176352706, 23639930.861723445, 23774973.54709419, 23910016.23246493, 24045058.91783567, 24180101.60320641, 24315144.288577154, 24450186.973947898, 24585229.659318637, 24720272.34468938, 24855315.03006012, 24990357.715430863, 25125400.400801603, 25260443.086172346, 25395485.771543086, 25530528.45691383, 25665571.14228457, 25800613.82765531, 25935656.51302605, 26070699.198396794, 26205741.883767534, 26340784.569138277, 26475827.254509017, 26610869.93987976, 26745912.6252505, 26880955.310621243, 27015997.995991983, 27151040.681362726, 27286083.366733465, 27421126.05210421, 27556168.73747495, 27691211.42284569, 27826254.108216435, 27961296.793587174, 28096339.478957918, 28231382.164328657, 28366424.8496994, 28501467.53507014, 28636510.220440883, 28771552.905811623, 28906595.591182366, 29041638.276553106, 29176680.96192385, 29311723.64729459, 29446766.33266533, 29581809.01803607, 29716851.703406814, 29851894.388777554, 29986937.074148297, 30121979.759519037, 30257022.44488978, 30392065.13026052, 30527107.815631263, 30662150.501002003, 30797193.186372746, 30932235.871743485, 31067278.55711423, 31202321.24248497, 31337363.92785571, 31472406.613226455, 31607449.298597194, 31742491.983967938, 31877534.669338677, 32012577.35470942, 32147620.04008016, 32282662.725450903, 32417705.410821643, 32552748.096192386, 32687790.781563126, 32822833.46693387, 32957876.15230461, 33092918.83767535, 33227961.52304609, 33363004.208416834, 33498046.893787574, 33633089.57915832, 33768132.26452906, 33903174.9498998, 34038217.635270536, 34173260.32064128, 34308303.00601202, 34443345.691382766, 34578388.37675351, 34713431.06212425, 34848473.74749499, 34983516.43286573, 35118559.118236475, 35253601.80360721, 35388644.488977954, 35523687.1743487, 35658729.85971944, 35793772.54509018, 35928815.23046093, 36063857.91583166, 36198900.601202406, 36333943.28657314, 36468985.971943885, 36604028.65731463, 36739071.34268537, 36874114.028056115, 37009156.71342685, 37144199.398797594, 37279242.08416834, 37414284.76953908, 37549327.45490982, 37684370.14028056, 37819412.8256513, 37954455.511022046, 38089498.19639278, 38224540.881763525, 38359583.56713427, 38494626.25250501, 38629668.937875755, 38764711.62324649, 38899754.308617234, 39034796.99398798, 39169839.67935872, 39304882.36472946, 39439925.0501002, 39574967.73547094, 39710010.42084169, 39845053.10621242, 39980095.791583166, 40115138.47695391, 40250181.16232465, 40385223.84769539, 40520266.53306613, 40655309.218436874, 40790351.90380762, 40925394.58917835, 41060437.2745491, 41195479.95991984, 41330522.64529058, 41465565.33066132, 41600608.01603206, 41735650.701402806, 41870693.38677355, 42005736.07214429, 42140778.75751503, 42275821.44288577, 42410864.128256515, 42545906.81362726, 42680949.498997994, 42815992.18436874, 42951034.86973948, 43086077.55511022, 43221120.24048096, 43356162.9258517, 43491205.611222446, 43626248.29659319, 43761290.981963925, 43896333.66733467, 44031376.35270541, 44166419.038076155, 44301461.72344689, 44436504.408817634, 44571547.09418838, 44706589.77955912, 44841632.46492986, 44976675.1503006, 45111717.83567134, 45246760.521042086, 45381803.20641282, 45516845.891783565, 45651888.57715431, 45786931.26252505, 45921973.947895795, 46057016.63326653, 46192059.318637274, 46327102.00400802, 46462144.68937876, 46597187.3747495, 46732230.06012024, 46867272.74549098, 47002315.43086173, 47137358.11623246, 47272400.801603206, 47407443.48697395, 47542486.17234469, 47677528.85771543, 47812571.54308617, 47947614.228456914, 48082656.91382766, 48217699.59919839, 48352742.28456914, 48487784.96993988, 48622827.65531062, 48757870.34068136, 48892913.0260521, 49027955.711422846, 49162998.39679359, 49298041.08216433, 49433083.76753507, 49568126.45290581, 49703169.138276555, 49838211.8236473, 49973254.509018034, 50108297.19438878, 50243339.87975952, 50378382.56513026, 50513425.250501, 50648467.93587174, 50783510.621242486, 50918553.30661323, 51053595.991983965, 51188638.67735471, 51323681.36272545, 51458724.048096195, 51593766.73346693, 51728809.418837674, 51863852.10420842, 51998894.78957916, 52133937.4749499, 52268980.16032064, 52404022.84569138, 52539065.531062126, 52674108.21643287, 52809150.901803605, 52944193.58717435, 53079236.27254509, 53214278.957915835, 53349321.64328657, 53484364.328657314, 53619407.01402806, 53754449.6993988, 53889492.38476954, 54024535.07014028, 54159577.75551102, 54294620.44088177, 54429663.1262525, 54564705.811623245, 54699748.49699399, 54834791.18236473, 54969833.86773547, 55104876.55310621, 55239919.238476954, 55374961.9238477, 55510004.60921843, 55645047.29458918, 55780089.97995992, 55915132.66533066, 56050175.3507014, 56185218.03607214, 56320260.721442886, 56455303.40681363, 56590346.09218437, 56725388.77755511, 56860431.46292585, 56995474.148296595, 57130516.83366734, 57265559.51903807, 57400602.20440882, 57535644.88977956, 57670687.5751503, 57805730.26052104, 57940772.94589178, 58075815.631262526, 58210858.31663327, 58345901.002004005, 58480943.68737475, 58615986.37274549, 58751029.058116235, 58886071.74348697, 59021114.428857714, 59156157.11422846, 59291199.7995992, 59426242.48496994, 59561285.17034068, 59696327.85571142, 59831370.541082166, 59966413.22645291, 60101455.911823645, 60236498.59719439, 60371541.28256513, 60506583.967935875, 60641626.65330661, 60776669.338677354, 60911712.0240481, 61046754.70941884, 61181797.39478958, 61316840.08016032, 61451882.76553106, 61586925.45090181, 61721968.13627254, 61857010.821643285, 61992053.50701403, 62127096.19238477, 62262138.87775551, 62397181.56312625, 62532224.248496994, 62667266.93386774, 62802309.61923847, 62937352.30460922, 63072394.98997996, 63207437.6753507, 63342480.36072145, 63477523.04609218, 63612565.731462926, 63747608.41683367, 63882651.10220441, 64017693.78757515, 64152736.47294589, 64287779.158316635, 64422821.84368738, 64557864.52905811, 64692907.21442886, 64827949.8997996, 64962992.58517034, 65098035.27054108, 65233077.95591182, 65368120.641282566, 65503163.32665331, 65638206.012024045, 65773248.69739479, 65908291.38276553, 66043334.068136275, 66178376.75350701, 66313419.438877754, 66448462.1242485, 66583504.80961924, 66718547.49498998, 66853590.18036072, 66988632.86573146, 67123675.5511022, 67258718.23647295, 67393760.92184368, 67528803.60721442, 67663846.29258516, 67798888.97795591, 67933931.66332665, 68068974.3486974, 68204017.03406814, 68339059.71943888, 68474102.40480962, 68609145.09018037, 68744187.77555111, 68879230.46092185, 69014273.14629258, 69149315.83166333, 69284358.51703407, 69419401.20240481, 69554443.88777554, 69689486.57314628, 69824529.25851703, 69959571.94388777, 70094614.62925851, 70229657.31462926, 70364700.0])
+              .range(['#fcfbfdff', '#fcfbfdff', '#fcfbfdff', '#fcfbfdff', '#fcfbfdff', '#fbfafdff', '#fbfafdff', '#fbfafdff', '#fbfafcff', '#fbf9fcff', '#faf9fcff', '#faf9fcff', '#faf9fcff', '#faf9fcff', '#faf8fcff', '#f9f8fcff', '#f9f8fbff', '#f9f8fbff', '#f9f7fbff', '#f9f7fbff', '#f8f7fbff', '#f8f7fbff', '#f8f7fbff', '#f8f6fbff', '#f7f6faff', '#f7f6faff', '#f7f6faff', '#f7f5faff', '#f7f5faff', '#f6f5faff', '#f6f5faff', '#f6f4faff', '#f6f4f9ff', '#f6f4f9ff', '#f5f4f9ff', '#f5f4f9ff', '#f5f3f9ff', '#f5f3f9ff', '#f5f3f9ff', '#f4f3f8ff', '#f4f2f8ff', '#f4f2f8ff', '#f4f2f8ff', '#f3f2f8ff', '#f3f2f8ff', '#f3f1f8ff', '#f3f1f8ff', '#f3f1f7ff', '#f2f1f7ff', '#f2f0f7ff', '#f2f0f7ff', '#f2f0f7ff', '#f2f0f7ff', '#f1f0f7ff', '#f1eff7ff', '#f1eff6ff', '#f1eff6ff', '#f1eff6ff', '#f0eef6ff', '#f0eef6ff', '#f0eef6ff', '#f0eef6ff', '#f0eef6ff', '#efedf5ff', '#efedf5ff', '#efedf5ff', '#eeecf5ff', '#eeecf5ff', '#eeecf5ff', '#edebf4ff', '#edebf4ff', '#edebf4ff', '#eceaf4ff', '#eceaf4ff', '#eceaf4ff', '#ebeaf3ff', '#ebe9f3ff', '#eae9f3ff', '#eae9f3ff', '#eae8f3ff', '#e9e8f3ff', '#e9e8f2ff', '#e9e7f2ff', '#e8e7f2ff', '#e8e7f2ff', '#e8e7f2ff', '#e7e6f2ff', '#e7e6f1ff', '#e7e6f1ff', '#e6e5f1ff', '#e6e5f1ff', '#e6e5f1ff', '#e5e4f1ff', '#e5e4f1ff', '#e5e4f0ff', '#e4e3f0ff', '#e4e3f0ff', '#e4e3f0ff', '#e3e3f0ff', '#e3e2f0ff', '#e3e2efff', '#e2e2efff', '#e2e1efff', '#e2e1efff', '#e1e1efff', '#e1e0efff', '#e1e0eeff', '#e0e0eeff', '#e0dfeeff', '#e0dfeeff', '#dfdfeeff', '#dfdfeeff', '#dfdeedff', '#dedeedff', '#dedeedff', '#deddedff', '#ddddedff', '#ddddedff', '#dddcedff', '#dcdcecff', '#dcdcecff', '#dcdcecff', '#dbdbecff', '#dbdbecff', '#dbdbecff', '#dadaebff', '#dadaebff', '#d9d9ebff', '#d9d9ebff', '#d8d8eaff', '#d8d8eaff', '#d7d7eaff', '#d7d7eaff', '#d6d7e9ff', '#d6d6e9ff', '#d5d6e9ff', '#d5d5e9ff', '#d4d5e8ff', '#d4d4e8ff', '#d3d4e8ff', '#d3d3e8ff', '#d3d3e7ff', '#d2d2e7ff', '#d2d2e7ff', '#d1d1e7ff', '#d1d1e7ff', '#d0d0e6ff', '#d0d0e6ff', '#cfd0e6ff', '#cfcfe6ff', '#cecfe5ff', '#cecee5ff', '#cdcee5ff', '#cdcde5ff', '#cccde4ff', '#cccce4ff', '#cbcce4ff', '#cbcbe4ff', '#cacbe3ff', '#cacae3ff', '#c9cae3ff', '#c9c9e3ff', '#c8c9e2ff', '#c8c9e2ff', '#c7c8e2ff', '#c7c8e2ff', '#c6c7e1ff', '#c6c7e1ff', '#c5c6e1ff', '#c5c6e1ff', '#c5c5e0ff', '#c4c5e0ff', '#c4c4e0ff', '#c3c4e0ff', '#c3c3e0ff', '#c2c3dfff', '#c2c2dfff', '#c1c2dfff', '#c1c2dfff', '#c0c1deff', '#c0c1deff', '#bfc0deff', '#bfc0deff', '#bebfddff', '#bebfddff', '#bdbeddff', '#bdbeddff', '#bcbddcff', '#bcbddcff', '#bbbcdcff', '#bbbcdbff', '#babbdbff', '#babadbff', '#b9badaff', '#b9b9daff', '#b8b9daff', '#b8b8daff', '#b7b8d9ff', '#b7b7d9ff', '#b7b7d9ff', '#b6b6d8ff', '#b6b5d8ff', '#b5b5d8ff', '#b5b4d7ff', '#b4b4d7ff', '#b4b3d7ff', '#b3b3d6ff', '#b3b2d6ff', '#b2b1d6ff', '#b2b1d5ff', '#b1b0d5ff', '#b1b0d5ff', '#b0afd4ff', '#b0afd4ff', '#afaed4ff', '#afaed3ff', '#aeadd3ff', '#aeacd3ff', '#adacd2ff', '#adabd2ff', '#acabd2ff', '#acaad1ff', '#abaad1ff', '#aba9d1ff', '#aaa8d0ff', '#aaa8d0ff', '#a9a7d0ff', '#a9a7d0ff', '#a9a6cfff', '#a8a6cfff', '#a8a5cfff', '#a7a5ceff', '#a7a4ceff', '#a6a3ceff', '#a6a3cdff', '#a5a2cdff', '#a5a2cdff', '#a4a1ccff', '#a4a1ccff', '#a3a0ccff', '#a39fcbff', '#a29fcbff', '#a29ecbff', '#a19ecaff', '#a19dcaff', '#a09dcaff', '#a09cc9ff', '#9f9cc9ff', '#9f9bc9ff', '#9e9ac8ff', '#9e9ac8ff', '#9d99c8ff', '#9d99c8ff', '#9c98c7ff', '#9c98c7ff', '#9b98c7ff', '#9b97c7ff', '#9a97c7ff', '#9a96c6ff', '#9a96c6ff', '#9995c6ff', '#9995c6ff', '#9894c5ff', '#9894c5ff', '#9793c5ff', '#9793c5ff', '#9692c5ff', '#9692c4ff', '#9591c4ff', '#9591c4ff', '#9491c4ff', '#9490c3ff', '#9390c3ff', '#938fc3ff', '#928fc3ff', '#928ec3ff', '#918ec2ff', '#918dc2ff', '#908dc2ff', '#908cc2ff', '#8f8cc1ff', '#8f8bc1ff', '#8e8bc1ff', '#8e8ac1ff', '#8d8ac1ff', '#8d8ac0ff', '#8c89c0ff', '#8c89c0ff', '#8c88c0ff', '#8b88bfff', '#8b87bfff', '#8a87bfff', '#8a86bfff', '#8986beff', '#8985beff', '#8885beff', '#8884beff', '#8784beff', '#8783bdff', '#8683bdff', '#8683bdff', '#8582bdff', '#8582bcff', '#8481bcff', '#8481bcff', '#8380bcff', '#8380bcff', '#827fbbff', '#827fbbff', '#817ebbff', '#817ebbff', '#807dbaff', '#807dbaff', '#807cbaff', '#7f7bb9ff', '#7f7bb9ff', '#7f7ab9ff', '#7e79b8ff', '#7e79b8ff', '#7d78b8ff', '#7d77b7ff', '#7d77b7ff', '#7c76b6ff', '#7c75b6ff', '#7c74b6ff', '#7b74b5ff', '#7b73b5ff', '#7b72b5ff', '#7a72b4ff', '#7a71b4ff', '#7a70b4ff', '#796fb3ff', '#796fb3ff', '#796eb2ff', '#786db2ff', '#786db2ff', '#776cb1ff', '#776bb1ff', '#776ab1ff', '#766ab0ff', '#7669b0ff', '#7668afff', '#7568afff', '#7567afff', '#7566aeff', '#7466aeff', '#7465aeff', '#7464adff', '#7363adff', '#7363acff', '#7362acff', '#7261acff', '#7261abff', '#7160abff', '#715fabff', '#715eaaff', '#705eaaff', '#705daaff', '#705ca9ff', '#6f5ca9ff', '#6f5ba8ff', '#6f5aa8ff', '#6e59a8ff', '#6e59a7ff', '#6e58a7ff', '#6d57a7ff', '#6d57a6ff', '#6c56a6ff', '#6c55a5ff', '#6c55a5ff', '#6b54a5ff', '#6b53a4ff', '#6b52a4ff', '#6a52a4ff', '#6a51a3ff', '#6a50a3ff', '#6950a3ff', '#694fa2ff', '#694ea2ff', '#684ea2ff', '#684da1ff', '#684ca1ff', '#674ca1ff', '#674ba0ff', '#664aa0ff', '#664aa0ff', '#66499fff', '#65489fff', '#65489fff', '#65479eff', '#64469eff', '#64459eff', '#64459dff', '#63449dff', '#63439dff', '#63439cff', '#62429cff', '#62419cff', '#62419bff', '#61409bff', '#613f9bff', '#603f9bff', '#603e9aff', '#603d9aff', '#5f3d9aff', '#5f3c99ff', '#5f3b99ff', '#5e3b99ff', '#5e3a98ff', '#5e3998ff', '#5d3998ff', '#5d3897ff', '#5d3797ff', '#5c3797ff', '#5c3696ff', '#5b3596ff', '#5b3596ff', '#5b3495ff', '#5a3395ff', '#5a3395ff', '#5a3294ff', '#593194ff', '#593194ff', '#593093ff', '#582f93ff', '#582f93ff', '#582e92ff', '#572d92ff', '#572c92ff', '#572c92ff', '#562b91ff', '#562a91ff', '#552a91ff', '#552990ff', '#552890ff', '#542890ff', '#54278fff', '#54268fff', '#53268fff', '#53258eff', '#53258eff', '#52248eff', '#52238eff', '#52238dff', '#51228dff', '#51218dff', '#51218cff', '#50208cff', '#50208cff', '#501f8bff', '#4f1e8bff', '#4f1e8bff', '#4f1d8bff', '#4e1c8aff', '#4e1c8aff', '#4e1b8aff', '#4d1a89ff', '#4d1a89ff', '#4d1989ff', '#4c1989ff', '#4c1888ff', '#4c1788ff', '#4b1788ff', '#4b1687ff', '#4b1587ff', '#4a1587ff', '#4a1487ff', '#4a1486ff', '#491386ff', '#491286ff', '#491285ff', '#481185ff', '#481085ff', '#481085ff', '#470f84ff', '#470f84ff', '#470e84ff', '#460d83ff', '#460d83ff', '#460c83ff', '#450b82ff', '#450b82ff', '#440a82ff', '#440a82ff', '#440981ff', '#430881ff', '#430881ff', '#430780ff', '#420680ff', '#420680ff', '#420580ff', '#41057fff', '#41047fff', '#41037fff', '#40037eff', '#40027eff', '#40017eff', '#3f017eff', '#3f007dff', '#3f007dff']);
+    
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x = d3.scale.linear()
+              .domain([2978400.0, 70364700.0])
+              .range([0, 450 - 50]);
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.legend = L.control({position: 'topright'});
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.legend.addTo(map_3b91eed035c726d0f732158d9dc879f6);
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.xAxis = d3.svg.axis()
+        .scale(color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([2978400.0, 11401687.5, 19824975.0, 28248262.5, 36671550.0, 45094837.5, 53518125.0, 61941412.5, 70364700.0]);
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.g = color_map_b6756bb6f30a35b9b01472a1c0a3b83a.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.g.selectAll("rect")
+        .data(color_map_b6756bb6f30a35b9b01472a1c0a3b83a.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x(color_map_b6756bb6f30a35b9b01472a1c0a3b83a.color.domain()[i - 1]) : color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x.range()[0],
+            x1: i < color_map_b6756bb6f30a35b9b01472a1c0a3b83a.color.domain().length ? color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x(color_map_b6756bb6f30a35b9b01472a1c0a3b83a.color.domain()[i]) : color_map_b6756bb6f30a35b9b01472a1c0a3b83a.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_b6756bb6f30a35b9b01472a1c0a3b83a.g.call(color_map_b6756bb6f30a35b9b01472a1c0a3b83a.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("");
+    
+            var layer_control_2a8b33dad4e56b3ff2de71c1a6a4767f_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_6f51f38568208f92cb799e34c963b87d,
+                },
+                overlays :  {
+                    "HeatMap" : heat_map_54b18546bfc6aebcb0c8a7f74aa90799,
+                    "High Performer Markers" : marker_cluster_1f067b506069c0c8d41cd4a5a6a7de58,
+                },
+            };
+            let layer_control_2a8b33dad4e56b3ff2de71c1a6a4767f = L.control.layers(
+                layer_control_2a8b33dad4e56b3ff2de71c1a6a4767f_layers.base_layers,
+                layer_control_2a8b33dad4e56b3ff2de71c1a6a4767f_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_3b91eed035c726d0f732158d9dc879f6);
+
+        
+</script>
+</html>
